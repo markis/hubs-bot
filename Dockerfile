@@ -18,7 +18,7 @@ RUN apk add build-base dcron && \
 
 # This will setup the python script in a cron job
 # /proc/1/fd/1 will output the stdout for docker
-RUN echo -e "*/5 * * * * cd /app && python -m hubs_bot.app > /proc/1/fd/1 2>&1 \n" > ./crontab
+RUN echo -e "* * * * * cd /app && python -m hubs_bot.app > /dev/stdout 2>&1 \n" > ./crontab
 RUN crontab ./crontab
 
 ADD . .
