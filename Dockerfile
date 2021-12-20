@@ -4,7 +4,10 @@ WORKDIR /app
 
 # crond doesn't like being launched directly
 # this will use a shell script to launch it
-RUN echo "crond -f" > ./entrypoint.sh && chmod +x ./entrypoint.sh
+RUN echo -e "rm -rf /var/spool/cron/crontabs && mkdir -m 0644 -p /var/spool/cron/crontabs \n" > ./entrypoint.sh
+RUN echo -e "chmod -R 0644 /var/spool/cron/crontabs \n" > ./entrypoint.sh
+RUN echo -e "crond -s /var/spool/cron/crontabs -b -L /var/log/cron/cron.log \n" > ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
 ENTRYPOINT /app/entrypoint.sh 
 
 # Install pip dependencies and avoid
