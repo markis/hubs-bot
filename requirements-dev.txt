@@ -1,0 +1,5 @@
+-r requirements.txt
+coverage==6.2
+pre-commit==2.16.0
+pytest==6.2.5
+types-requests=2.26.2
