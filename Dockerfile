@@ -13,17 +13,17 @@ RUN apk add build-base dcron && \
 
 # crond doesn't like being launched directly
 # this will use a shell script to launch it
-RUN echo -e "rm -rf /var/spool/cron/crontabs && mkdir -m 0644 -p /var/spool/cron/crontabs \n" > ./entrypoint.sh
-RUN echo -e "chmod -R 0644 /var/spool/cron/crontabs \n" > ./entrypoint.sh
-RUN echo -e "crond -s /var/spool/cron/crontabs -b -L /app/cron.log \n" > ./entrypoint.sh
-RUN echo -e "tail -f /app/cron.log" > ./entrypoint.sh
-RUN touch /app/cron.log && chmod 0666 /app/cron.log
+# RUN echo -e "rm -rf /var/spool/cron/crontabs && mkdir -m 0644 -p /var/spool/cron/crontabs \n" > ./entrypoint.sh
+# RUN echo -e "chmod -R 0644 /var/spool/cron/crontabs \n" > ./entrypoint.sh
+# RUN echo -e "crond -s /var/spool/cron/crontabs -b -L /app/cron.log && tail -f /app/cron.log" > ./entrypoint.sh
+RUN touch /var/log/cron.log && chmod 0666 /var/log/cron.log
+RUN echo -e "crond -b -L /var/log/cron.log && tail -f /var/log/cron.log" > ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 ENTRYPOINT /app/entrypoint.sh 
 
 # This will setup the python script in a cron job
 # /proc/1/fd/1 will output the stdout for docker
-RUN echo -e "* * * * * cd /app && python -m hubs_bot.app > /app/cron.log 2>&1 \n" > ./crontab
+RUN echo -e "* * * * * cd /app && python -m hubs_bot.app > /var/log/cron.log 2>&1 \n" > ./crontab
 RUN crontab ./crontab
 
 ADD . .
