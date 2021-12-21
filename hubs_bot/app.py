@@ -1,5 +1,7 @@
 import dataclasses
+import logging
 import os
+import time
 
 from typing import Optional
 
@@ -9,7 +11,13 @@ from bs4 import BeautifulSoup
 from bs4.element import Tag
 from praw import Reddit
 from praw.reddit import Subreddit
+from schedule import every
+from schedule import repeat
+from schedule import run_pending
 
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("hubs-bot")
 
 BASE_URL = "https://www.beaconjournal.com"
 HUBTIMES_URL = f"{BASE_URL}/communities/hudsonhubtimes/"
@@ -60,14 +68,22 @@ def submit_link(link: HubTimesLink) -> None:
     sr: Subreddit = reddit.subreddit(SUBREDDIT)
     for submission in sr.new():
         if submission.url == link.url:
-            print("link already exists, don't submit")
+            logger.debug("link already exists, don't submit")
             return
 
     sr.submit(title=link.headline, url=link.url)
-    print(f"submitted link, {link.url}")
+    logger.info(f"submitted link, {link.url}")
 
 
-if __name__ == "__main__":
+@repeat(every(60).seconds)
+def main() -> None:
     link = get_hub_times_link()
     if link:
         submit_link(link)
+
+
+if __name__ == "__main__":
+    logger.info("starting")
+    while True:
+        run_pending()
+        time.sleep(1)
