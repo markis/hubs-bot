@@ -8,6 +8,7 @@ RUN echo -e "rm -rf /var/spool/cron/crontabs && mkdir -m 0644 -p /var/spool/cron
 RUN echo -e "chmod -R 0644 /var/spool/cron/crontabs \n" > ./entrypoint.sh
 RUN echo -e "touch /var/log/cron.log && chmod 0666 /var/log/cron.log \n" > .entrypoint.sh
 RUN echo -e "crond -s /var/spool/cron/crontabs -b -L /var/log/cron.log \n" > ./entrypoint.sh
+RUN echo -e "sleep infinity" > ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 ENTRYPOINT /app/entrypoint.sh 
 
