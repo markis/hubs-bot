@@ -1,0 +1,4 @@
+export SUBREDDIT=hudsonohtest
+export CLIENT_ID=<CLIENT_ID>
+export CLIENT_SECRET=<CLIENT_SECRET>
+export PASSWORD=<u/hubs-bot password>
