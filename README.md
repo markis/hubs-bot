@@ -1,6 +1,6 @@
 # Hubs-bot - hub times bot for r/HudsonOH
 
-This bot will check periodically check the front page of the hub times and grab any story explicitly declared as being part of the hub times.
+This bot will periodically check the front page of the hub times and grab any story explicitly declared as being part of the hub times, then post it to r/HudsonOH.
 
 ### Development
 
@@ -16,7 +16,7 @@ This bot will check periodically check the front page of the hub times and grab 
   $ make test
 ```
 
-Running the project locally requires the setting some environment variables. A sample `.envrc` file is provided in the project. Copy `.envrc.sample` to `.envrc` and update the environment variables.
+Running the project locally requires setting some environment variables. A sample `.envrc` file is provided in the project. Copy `.envrc.sample` to `.envrc` and update the environment variables.
 
 ```console
   $ cp .envrc.sample .envrc
