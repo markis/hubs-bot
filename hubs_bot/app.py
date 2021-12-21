@@ -68,16 +68,15 @@ def submit_link(link: HubTimesLink) -> None:
     )
     reddit.validate_on_submit = True
     sr: Subreddit = reddit.subreddit(SUBREDDIT)
+    submission: Submission
     for submission in sr.new():
         if submission.url == link.url:
             logger.debug("link already exists, don't submit")
             return
 
-    submitted: Submission = sr.submit(
-        title=link.headline, url=link.url, flair_id=SUBREDDIT_FLAIR
-    )
-    submitted.mod.approve()
-    logger.info(f"submitted link, {submitted.id} {link.url}")
+    submission = sr.submit(title=link.headline, url=link.url, flair_id=SUBREDDIT_FLAIR)
+    submission.mod.approve()
+    logger.info(f"submitted link, {submission.id} {link.url}")
 
 
 @repeat(every(60).seconds)
