@@ -10,6 +10,7 @@ import requests
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 from praw import Reddit
+from praw.reddit import Submission
 from praw.reddit import Subreddit
 from schedule import every
 from schedule import repeat
@@ -22,6 +23,7 @@ logger = logging.getLogger("hubs-bot")
 BASE_URL = "https://www.beaconjournal.com"
 HUBTIMES_URL = f"{BASE_URL}/communities/hudsonhubtimes/"
 SUBREDDIT = os.environ.get("SUBREDDIT", "hudsonohtest")
+SUBREDDIT_FLAIR = os.environ.get("SUBREDDIT_FLAIR")
 
 
 @dataclasses.dataclass
@@ -71,8 +73,11 @@ def submit_link(link: HubTimesLink) -> None:
             logger.debug("link already exists, don't submit")
             return
 
-    sr.submit(title=link.headline, url=link.url)
-    logger.info(f"submitted link, {link.url}")
+    submitted: Submission = sr.submit(
+        title=link.headline, url=link.url, flair_id=SUBREDDIT_FLAIR
+    )
+    submitted.mod.approve()
+    logger.info(f"submitted link, {submitted.id} {link.url}")
 
 
 @repeat(every(60).seconds)

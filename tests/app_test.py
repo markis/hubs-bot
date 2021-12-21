@@ -1,3 +1,4 @@
+from unittest.mock import ANY
 from unittest.mock import Mock
 from unittest.mock import patch
 
@@ -19,7 +20,7 @@ def test_submit_link(mock_reddit: Mock) -> None:
 
     submit_link(mock_link)
 
-    mock_sr.submit.assert_called_with(title="test", url="http://test.com")
+    mock_sr.submit.assert_called_with(title="test", url="http://test.com", flair_id=ANY)
 
 
 @patch("hubs_bot.app.Reddit")
