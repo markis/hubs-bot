@@ -6,9 +6,9 @@ WORKDIR /app
 # this will use a shell script to launch it
 RUN echo -e "rm -rf /var/spool/cron/crontabs && mkdir -m 0644 -p /var/spool/cron/crontabs \n" > ./entrypoint.sh
 RUN echo -e "chmod -R 0644 /var/spool/cron/crontabs \n" > ./entrypoint.sh
-RUN echo -e "touch /var/log/cron.log && chmod 0666 /var/log/cron.log \n" > .entrypoint.sh
-RUN echo -e "crond -s /var/spool/cron/crontabs -b -L /var/log/cron.log \n" > ./entrypoint.sh
-RUN echo -e "sleep infinity" > ./entrypoint.sh
+RUN echo -e "touch ./cron.log && chmod 0666 ./cron.log \n" > .entrypoint.sh
+RUN echo -e "crond -s /var/spool/cron/crontabs -b -L ./cron.log \n" > ./entrypoint.sh
+RUN echo -e "tail -f ./cron.log" > ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 ENTRYPOINT /app/entrypoint.sh 
 
@@ -23,7 +23,7 @@ RUN apk add build-base dcron && \
 
 # This will setup the python script in a cron job
 # /proc/1/fd/1 will output the stdout for docker
-RUN echo -e "* * * * * cd /app && python -m hubs_bot.app > /dev/stdout 2>&1 \n" > ./crontab
+RUN echo -e "* * * * * cd /app && python -m hubs_bot.app > ./cron.log 2>&1 \n" > ./crontab
 RUN crontab ./crontab
 
 ADD . .
