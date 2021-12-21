@@ -32,7 +32,22 @@ class HubTimesLink:
     url: str
 
 
+@repeat(every(5).minutes)
+def main() -> None:
+    """
+    Hubs-bot main
+
+    This is the starting point of this script.
+    """
+    link = get_hub_times_link()
+    if link:
+        submit_link(link)
+
+
 def get_hub_times_link() -> Optional[HubTimesLink]:
+    """
+    Get the latest article from the hub times front page
+    """
     req = requests.get(HUBTIMES_URL)
     soup = BeautifulSoup(req.text, "html.parser")
     link = soup.find(is_hub_times_link)
@@ -43,6 +58,9 @@ def get_hub_times_link() -> Optional[HubTimesLink]:
 
 
 def is_hub_times_link(tag: Tag) -> bool:
+    """
+    Look for a link that specifies that's tagged as "Hudson Hub Times"
+    """
     if tag.name == "a" and tag.has_attr("href"):
         if tag.find(attrs={"data-c-ms": "HUDSON HUB TIMES"}):
             return True
@@ -59,6 +77,9 @@ def get_url(tag: Tag) -> str:
 
 
 def submit_link(link: HubTimesLink) -> None:
+    """
+    Submit the link to Reddit
+    """
     reddit = Reddit(
         client_id=os.environ["CLIENT_ID"],
         client_secret=os.environ["CLIENT_SECRET"],
@@ -79,15 +100,9 @@ def submit_link(link: HubTimesLink) -> None:
     logger.info(f"submitted link, {submission.id} {link.url}")
 
 
-@repeat(every(60).seconds)
-def main() -> None:
-    link = get_hub_times_link()
-    if link:
-        submit_link(link)
-
-
 if __name__ == "__main__":
     logger.info("starting")
+    main()
     while True:
         run_pending()
         time.sleep(1)
