@@ -24,7 +24,7 @@ BASE_URL = "https://www.beaconjournal.com"
 HUBTIMES_URL = f"{BASE_URL}/communities/hudsonhubtimes/"
 SUBREDDIT = os.environ.get("SUBREDDIT", "hudsonohtest")
 SUBREDDIT_FLAIR = os.environ.get("SUBREDDIT_FLAIR")
-NEWS_TAG = "LOCAL"
+NEWS_TAGS = ("LOCAL", "HUDSON HUB TIMES")
 
 
 @dataclasses.dataclass
@@ -63,8 +63,9 @@ def is_hub_times_link(tag: Tag) -> bool:
     Look for a link that specifies that's tagged with a specific tag
     """
     if tag.name == "a" and tag.has_attr("href"):
-        if tag.find(attrs={"data-c-ms": NEWS_TAG}):
-            return True
+        for news_tag in NEWS_TAGS:
+            if tag.find(attrs={"data-c-ms": NEWS_TAG}):
+                return True
     return False
 
 
