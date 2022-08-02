@@ -64,7 +64,7 @@ def is_hub_times_link(tag: Tag) -> bool:
     """
     if tag.name == "a" and tag.has_attr("href"):
         for news_tag in NEWS_TAGS:
-            if tag.find(attrs={"data-c-ms": NEWS_TAG}):
+            if tag.find(attrs={"data-c-ms": news_tag}):
                 return True
     return False
 
