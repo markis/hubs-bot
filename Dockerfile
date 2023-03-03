@@ -4,8 +4,9 @@ WORKDIR /app
 ENTRYPOINT ["python", "-m", "hubs_bot.app"]
 
 FROM base as build
+RUN apk add --no-cache build-base
 COPY . /app
-RUN apk add --no-cache build-base && make build
+RUN make build
 
 FROM base as runtime
 COPY --from=build /app/dist/ /tmp/
