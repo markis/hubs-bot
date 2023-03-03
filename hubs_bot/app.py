@@ -2,20 +2,14 @@ import dataclasses
 import logging
 import os
 import time
-
 from typing import Optional
 
 import requests
-
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 from praw import Reddit
-from praw.reddit import Submission
-from praw.reddit import Subreddit
-from schedule import every
-from schedule import repeat
-from schedule import run_pending
-
+from praw.reddit import Submission, Subreddit
+from schedule import every, repeat, run_pending
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("hubs-bot")

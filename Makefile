@@ -1,31 +1,33 @@
-.PHONY: build
-build: venv pre-commit
-	@pip install .
-	@python setup.py build
+VENV := "venv"
 
-.PHONY: lint
-lint: pre-commit
-	@pre-commit run --all-files
+venv: venv/touchfile
 
-.PHONY: pre-commit
-pre-commit:
-	@command -v pre-commit >/dev/null || pip install pre-commit
-	@pre-commit install -f --install-hooks
+venv/touchfile: pyproject.toml
+	test -d ${VENV} || python -m venv ${VENV}
+	. ${VENV}/bin/activate; pip install ".[dev]"
+	touch venv/touchfile
 
-.PHONY: venv
-venv:
-	@test -d hubs_bot-venv || virtualenv -p python3 hubs_bot-venv
-	@. hubs_bot-venv/bin/activate
-	@python -m pip install --quiet --upgrade pip
-	@pip install --quiet -Ur requirements-dev.txt
+lint: venv
+	@. ${VENV}/bin/activate; \
+		ruff check . ; \
+		black --check .
 
-.PHONY: test
-test:
-	@command -v coverage >/dev/null || pip install coverage
-	@coverage run --source="hubs_bot/" -m pytest tests/*_test.py
-	@coverage report -m
+fix: venv
+	@. ${VENV}/bin/activate; \
+		ruff check --fix . ; \
+		black .
 
-.PHONY: clean
+test: venv
+	@. ${VENV}/bin/activate; \
+		coverage run ; \
+		coverage report -m
+
+build:
+	@test -d venv || python -m venv venv
+	@. ${VENV}/bin/activate; pip install -U ".[dev]"; python -m build
+
 clean:
-	@rm -rf hubs_bot-venv
-	@find -iname "*.pyc" -delete
+	@rm -rf ${VENV} build dist *.egg-info
+	@find . -name "*.pyc" -delete
+
+.PHONY: venv lint build test clean
