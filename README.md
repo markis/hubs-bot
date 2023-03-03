@@ -1,13 +1,13 @@
-# Hubs-bot - hub times bot for r/HudsonOH
+# Hubs-bot - Hub Times Bot for r/HudsonOH
 
-This bot will periodically check the front page of the hub times and grab any story explicitly declared as being part of the hub times, then post it to r/HudsonOH.
+This bot will periodically check the front page of the hub times and grab any story explicitly declared as being part of the Hub Times, then post it to r/HudsonOH.
 
 ### Development
 
-`make build` will setup the environment and create a python virtual environment.
+`make` will setup the environment and create a python virtual environment.
 
 ```console
-  $ make build
+  $ make
 ```
 
 `make test` will run the test suite
