@@ -5,7 +5,7 @@ services:
     image: markis/hubs-bot:latest
     container_name: hubs_bot
     build: .
-    #volumes:
-    #  - ./:/app
+    volumes:
+      - ./:/app
     entrypoint: ["sleep", "infinity"]
 
