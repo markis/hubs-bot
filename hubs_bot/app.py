@@ -1,17 +1,13 @@
 import dataclasses
 import logging
 import os
-import time
-from typing import Optional
 
 import requests
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 from praw import Reddit
 from praw.reddit import Submission, Subreddit
-from schedule import every, repeat, run_pending
 
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("hubs-bot")
 
 BASE_URL = "https://www.beaconjournal.com"
@@ -27,7 +23,6 @@ class HubTimesLink:
     url: str
 
 
-@repeat(every(5).minutes)
 def main() -> None:
     """
     Hubs-bot main
@@ -39,7 +34,7 @@ def main() -> None:
         submit_link(link)
 
 
-def get_hub_times_link() -> Optional[HubTimesLink]:
+def get_hub_times_link() -> HubTimesLink | None:
     """
     Get the latest article from the hub times front page
     """
@@ -94,11 +89,3 @@ def submit_link(link: HubTimesLink) -> None:
     submission = sr.submit(title=link.headline, url=link.url, flair_id=SUBREDDIT_FLAIR)
     submission.mod.approve()
     logger.info(f"submitted link, {submission.id} {link.url}")
-
-
-if __name__ == "__main__":
-    logger.info("starting")
-    main()
-    while True:
-        run_pending()
-        time.sleep(1)
