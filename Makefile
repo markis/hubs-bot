@@ -22,14 +22,15 @@ fix: venv
 test: venv
 	@. ${VENV}/bin/activate; \
 		coverage run ; \
-		coverage report -m
+		coverage report -m ; \
+		coverage html
 
 build:
 	@test -d venv || python -m venv venv
 	@. ${VENV}/bin/activate; pip install -U ".[dev]"; python -m build
 
 clean:
-	@rm -rf ${VENV} build dist *.egg-info
+	@rm -rf ${VENV} build dist htmlcov *.egg-info
 	@find . -name "*.pyc" -delete
 
 .PHONY: venv lint build test clean
