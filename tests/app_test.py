@@ -1,10 +1,6 @@
-from unittest.mock import ANY
-from unittest.mock import Mock
-from unittest.mock import patch
+from unittest.mock import ANY, Mock, patch
 
-from hubs_bot.app import get_hub_times_link
-from hubs_bot.app import HubTimesLink
-from hubs_bot.app import submit_link
+from hubs_bot.app import HubTimesLink, get_hub_times_link, submit_link
 
 
 def test_get_hub_times_link() -> None:

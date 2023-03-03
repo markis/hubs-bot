@@ -2,11 +2,12 @@
 /.envrc
 __pycache__
 /build
+/venv
 /.vscode
-/otto-venv
 /.coverage
 /.pytest_cache
 /.mypy_cache
+/.ruff_cache
 /mypy
 
 *.pyc
