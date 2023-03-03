@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  hubs_bot:
+    image: markis/hubs-bot:latest
+    container_name: hubs_bot
+    build: .
+    #volumes:
+    #  - ./:/app
+    entrypoint: ["sleep", "infinity"]
+
