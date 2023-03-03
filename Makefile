@@ -1,5 +1,7 @@
 VENV := "venv"
 
+all: lint test build
+
 venv: venv/touchfile
 
 venv/touchfile: pyproject.toml
