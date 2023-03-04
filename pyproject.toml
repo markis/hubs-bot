@@ -1,7 +1,7 @@
 [build-system]
 build-backend = "setuptools.build_meta"
 requires = [
-  "setuptools >= 40.6.0", 
+  "setuptools >= 61.0.0", 
 ]
 
 [project]
@@ -32,6 +32,7 @@ dev = [
 
 [tool.setuptools]
 py-modules = ["hubs_bot"]
+packages = ["hubs_bot"]
 
 [tool.coverage.run]
 source = ["hubs_bot/"]
