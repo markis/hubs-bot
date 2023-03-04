@@ -34,7 +34,10 @@ class HubTimesBot:
         This is the starting point of this script.
         """
         link = self.get_hub_times_link()
-        if link:
+        if not link:
+            logger.info("no link found")
+        else:
+            logger.info(f"link found: {link}")
             self.submit_link(link)
 
     def get_hub_times_link(self) -> HubTimesLink | None:
@@ -74,11 +77,9 @@ class HubTimesBot:
         reddit.validate_on_submit = True
         sr: Subreddit = reddit.subreddit(self.config.subreddit)
         submission: Submission
-        print(sr)
-        print(sr.new())
         for submission in sr.new():
             if submission.url == link.url:
-                logger.debug("link already exists, don't submit")
+                logger.info("link already exists, don't submit")
                 return
 
         submission = sr.submit(
