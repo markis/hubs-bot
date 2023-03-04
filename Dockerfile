@@ -11,6 +11,5 @@ RUN make build
 
 FROM base as runtime
 USER bot
-COPY . /app
 COPY --from=build /app/dist/ /tmp/
 RUN pip install --user --no-cache-dir /tmp/hubs_bot-1.0.0-py3-none-any.whl 
