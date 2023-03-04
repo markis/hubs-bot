@@ -1,91 +1,88 @@
-import dataclasses
-import logging
-import os
+from collections.abc import Callable
+from dataclasses import dataclass
 
-import requests
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 from praw import Reddit
 from praw.reddit import Submission, Subreddit
 
-logger = logging.getLogger("hubs-bot")
-
-BASE_URL = "https://www.beaconjournal.com"
-HUBTIMES_URL = f"{BASE_URL}/communities/hudsonhubtimes/"
-SUBREDDIT = os.environ.get("SUBREDDIT", "hudsonohtest")
-SUBREDDIT_FLAIR = os.environ.get("SUBREDDIT_FLAIR")
-NEWS_TAGS = ("LOCAL", "HUDSON HUB TIMES")
+from hubs_bot import logger
+from hubs_bot.config import Config
+from hubs_bot.context import Context
 
 
-@dataclasses.dataclass
+@dataclass
 class HubTimesLink:
     headline: str
     url: str
 
 
-def main() -> None:
-    """
-    Hubs-bot main
+class HubTimesBot:
+    config: Config
+    reddit: Reddit
+    http_get: Callable[[str], str]
 
-    This is the starting point of this script.
-    """
-    link = get_hub_times_link()
-    if link:
-        submit_link(link)
+    def __init__(self, context: Context, config: Config) -> None:
+        self.config = config
+        self.reddit = context.reddit
+        self.http_get = context.http_get
 
+    def run(self) -> None:
+        """
+        Hubs-bot main
 
-def get_hub_times_link() -> HubTimesLink | None:
-    """
-    Get the latest article from the hub times front page
-    """
-    req = requests.get(HUBTIMES_URL)
-    soup = BeautifulSoup(req.text, "html.parser")
-    link = soup.find(is_hub_times_link)
-    if not link:
-        return None
+        This is the starting point of this script.
+        """
+        link = self.get_hub_times_link()
+        if link:
+            self.submit_link(link)
 
-    return HubTimesLink(url=get_url(link), headline=get_headline(link))
+    def get_hub_times_link(self) -> HubTimesLink | None:
+        """
+        Get the latest article from the hub times front page
+        """
+        html = self.http_get(self.config.hubtimes_url)
+        soup = BeautifulSoup(html, "html.parser")
+        link = soup.find(self.is_hub_times_link)
+        if not link:
+            return None
 
+        return HubTimesLink(url=self.get_url(link), headline=self.get_headline(link))
 
-def is_hub_times_link(tag: Tag) -> bool:
-    """
-    Look for a link that specifies that's tagged with a specific tag
-    """
-    if tag.name == "a" and tag.has_attr("href"):
-        for news_tag in NEWS_TAGS:
-            if tag.find(attrs={"data-c-ms": news_tag}):
-                return True
-    return False
+    def is_hub_times_link(self, tag: Tag) -> bool:
+        """
+        Look for a link that specifies that's tagged with a specific tag
+        """
+        if tag.name == "a" and tag.has_attr("href"):
+            for news_tag in self.config.news_tags:
+                if tag.find(attrs={"data-c-ms": news_tag}):
+                    return True
+        return False
 
+    def get_headline(self, tag: Tag) -> str:
+        text = tag.get_text() or ""
+        return text.strip()
 
-def get_headline(tag: Tag) -> str:
-    text = tag.get_text() or ""
-    return text.strip()
+    def get_url(self, tag: Tag) -> str:
+        return str(self.config.base_url + tag.attrs["href"])
 
+    def submit_link(self, link: HubTimesLink) -> None:
+        """
+        Submit the link to Reddit
+        """
+        reddit = self.reddit
+        reddit.validate_on_submit = True
+        sr: Subreddit = reddit.subreddit(self.config.subreddit)
+        submission: Submission
+        print(sr)
+        print(sr.new())
+        for submission in sr.new():
+            if submission.url == link.url:
+                logger.debug("link already exists, don't submit")
+                return
 
-def get_url(tag: Tag) -> str:
-    return str(BASE_URL + tag.attrs["href"])
-
-
-def submit_link(link: HubTimesLink) -> None:
-    """
-    Submit the link to Reddit
-    """
-    reddit = Reddit(
-        client_id=os.environ["CLIENT_ID"],
-        client_secret=os.environ["CLIENT_SECRET"],
-        password=os.environ["PASSWORD"],
-        username="hubs-bot",
-        user_agent="hubs-bot",
-    )
-    reddit.validate_on_submit = True
-    sr: Subreddit = reddit.subreddit(SUBREDDIT)
-    submission: Submission
-    for submission in sr.new():
-        if submission.url == link.url:
-            logger.debug("link already exists, don't submit")
-            return
-
-    submission = sr.submit(title=link.headline, url=link.url, flair_id=SUBREDDIT_FLAIR)
-    submission.mod.approve()
-    logger.info(f"submitted link, {submission.id} {link.url}")
+        submission = sr.submit(
+            title=link.headline, url=link.url, flair_id=self.config.subreddit_flair
+        )
+        submission.mod.approve()
+        logger.info(f"submitted link, {submission.id} {link.url}")

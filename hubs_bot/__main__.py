@@ -1,10 +1,8 @@
-import logging
+from hubs_bot.app import HubTimesBot
+from hubs_bot.config import Config
+from hubs_bot.context import Context
 
-from hubs_bot.app import main
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("hubs-bot")
-
-logger.info("starting")
-
-main()
+config = Config()
+context = Context(config)
+bot = HubTimesBot(context, config)
+bot.run()
