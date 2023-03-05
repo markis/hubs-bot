@@ -1,3 +1,4 @@
+import logging
 from collections.abc import Callable
 from dataclasses import dataclass
 
@@ -6,9 +7,10 @@ from bs4.element import Tag
 from praw import Reddit
 from praw.reddit import Submission, Subreddit
 
-from hubs_bot import logger
 from hubs_bot.config import Config
 from hubs_bot.context import Context
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -33,6 +35,8 @@ class HubTimesBot:
 
         This is the starting point of this script.
         """
+        logger.info("running")
+
         link = self.get_hub_times_link()
         if not link:
             logger.info("no link found")
@@ -86,4 +90,4 @@ class HubTimesBot:
             title=link.headline, url=link.url, flair_id=self.config.subreddit_flair
         )
         submission.mod.approve()
-        logger.info(f"submitted link, {submission.id} {link.url}")
+        logger.info(f"submitted link, {submission.id}")
