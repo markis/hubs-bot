@@ -1,7 +1,9 @@
 [build-system]
 build-backend = "setuptools.build_meta"
 requires = [
-  "setuptools >= 61.0.0", 
+  "build",
+  "setuptools >= 61.0.0",
+  "wheel",
 ]
 
 [project]
@@ -27,7 +29,7 @@ dev = [
   "mypy",
   "pytest",
   "types-requests",
-  "ruff"
+  "ruff",
 ]
 
 [tool.setuptools]
