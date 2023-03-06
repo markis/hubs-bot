@@ -1,45 +1,32 @@
 PWD := "."
-VENV := "venv"
+INSTALL_STAMP := .install.stamp
 
 all: lint test build
 
-venv: venv/touchfile
+install:
+	poetry install
 
-venv/touchfile: pyproject.toml
-	test -d ${VENV} || python -m venv ${VENV}
-	. ${VENV}/bin/activate; (\
-		pip install --disable-pip-version-check ".[dev]";\
-	)
-	touch venv/touchfile
+lint:
+	poetry run ruff check ${PWD}
+	poetry run black --check ${PWD}
+	poetry run mypy ${PWD}
 
-lint: venv
-	@. ${VENV}/bin/activate;(\
-		ruff check "${PWD}" ;\
-		black --check "${PWD}" ;\
-	)
+fix:
+	poetry run ruff check --fix ${PWD}
+	poetry run black ${PWD}
 
-fix: venv
-	@. ${VENV}/bin/activate; (\
-		ruff check --fix "${PWD}" ;\
-		black "${PWD}" ;\
-	)
-
-test: venv
-	@. ${VENV}/bin/activate;(\
-		coverage run;\
-		coverage report -m;\
-		coverage html;\
-	)
+test:
+	poetry run coverage run -m pytest
+	poetry run coverage report -m
+	poetry run coverage html
 
 build:
-	@test -d venv || python -m venv venv
-	@. ${VENV}/bin/activate; (\
-		pip install --disable-pip-version-check -U ".[dev]";\
-		python -m build --wheel;\
-	)
+	pip install --disable-pip-version-check build wheel
+	python -m build --wheel
 
 clean:
-	@rm -rf ${VENV} build dist htmlcov *.egg-info
-	@find . -name "*.pyc" -delete
+	poetry env remove --all
+	rm -rf build dist htmlcov *.egg-info
+	find . -name "*.pyc" -delete
 
 .PHONY: venv lint test build clean
