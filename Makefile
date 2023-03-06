@@ -1,7 +1,7 @@
 PWD := "."
-INSTALL_STAMP := .install.stamp
+.PHONY: venv lint test build clean
 
-all: lint test build
+all: install lint test
 
 install:
 	poetry install
@@ -20,13 +20,7 @@ test:
 	poetry run coverage report -m
 	poetry run coverage html
 
-build:
-	pip install --disable-pip-version-check build wheel
-	python -m build --wheel
-
 clean:
 	poetry env remove --all
 	rm -rf build dist htmlcov *.egg-info
 	find . -name "*.pyc" -delete
-
-.PHONY: venv lint test build clean
