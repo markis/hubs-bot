@@ -31,12 +31,6 @@ class Config:
         default_factory=create_set_factory("NEWS_TAGS", NEWS_TAGS, os.environ)
     )
     username: str = os.environ.get("USERNAME", "hubs-bot")
-    password: str = os.environ.get("PASSWORD", "")
-    client_id: str = os.environ.get("CLIENT_ID", "")
-    client_secret: str = os.environ.get("CLIENT_SECRET", "")
-
-    def __post_init__(self) -> None:
-        assert self.client_id, "$CLIENT_ID needs to be set"
-        assert self.client_secret, "$CLIENT_SECRET needs to be set"
-        assert self.password, "$PASSWORD needs to be set"
-        assert self.username, "$USERNAME needs to be set"
+    password: str = os.environ.get("PASSWORD", "password")
+    client_id: str = os.environ.get("CLIENT_ID", "client_id")
+    client_secret: str = os.environ.get("CLIENT_SECRET", "client_secret")
