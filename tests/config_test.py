@@ -1,5 +1,4 @@
 import os
-from collections.abc import Iterable
 from typing import Any
 from unittest import mock
 
@@ -8,8 +7,7 @@ import pytest
 from hubs_bot.config import Config, create_set_factory
 
 
-@pytest.fixture(autouse=True)
-def mock_settings_env_vars() -> Iterable[None]:
+def test_config_with_mock_env() -> None:
     mock_environ = dict(
         CLIENT_ID="test",
         CLIENT_SECRET="test",
@@ -17,11 +15,7 @@ def mock_settings_env_vars() -> Iterable[None]:
         PASSWORD="test",
     )
     with mock.patch.dict(os.environ, mock_environ):
-        yield
-
-
-def test_config_with_mock_env() -> None:
-    config = Config()
+        config = Config()
 
     assert config.client_secret != ""
     assert config.client_id != ""

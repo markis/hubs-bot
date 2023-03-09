@@ -1,0 +1,32 @@
+name: python check
+
+on:
+  pull_request:
+
+jobs:
+  black-check:
+    name: black check
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: markis/python-checker@main
+      with:
+        cmd: black --check .
+
+  mypy-check:
+    name: mypy check
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: markis/python-checker@main
+      with:
+        cmd: mypy --install-types --non-interactive .
+
+  ruff-check:
+    name: ruff check
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: markis/python-checker@main
+      with:
+        cmd: ruff check .
