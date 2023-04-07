@@ -4,8 +4,8 @@ on:
   pull_request:
 
 jobs:
-  black-check:
-    name: black check
+  format-check:
+    name: format check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -13,8 +13,8 @@ jobs:
       with:
         cmd: ["black", "--check", "."]
 
-  mypy-check:
-    name: mypy check
+  type-check:
+    name: type check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -22,8 +22,8 @@ jobs:
       with:
         cmd: ["mypy", "--install-types", "--non-interactive", "."]
 
-  ruff-check:
-    name: ruff check
+  lint-check:
+    name: lint check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
