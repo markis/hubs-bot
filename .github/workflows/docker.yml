@@ -8,8 +8,8 @@ on:
       - master
 
 env:
-  IMAGE_NAME: markis/hubs-bot
   PLATFORMS: linux/arm
+  IMAGE_NAME: ${{ GITHUB_REPOSITORY }}
 
 jobs:
   docker:
