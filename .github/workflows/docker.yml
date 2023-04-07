@@ -9,7 +9,7 @@ on:
 
 env:
   PLATFORMS: linux/arm
-  IMAGE_NAME: ${{ github.respository }}
+  IMAGE_NAME: markis/hubs-bot
 
 jobs:
   docker:
