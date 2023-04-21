@@ -4,8 +4,11 @@ services:
   hubs_bot:
     image: markis/hubs-bot:latest
     container_name: hubs_bot
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      platforms:
+        - "linux/arm/v7"
     volumes:
-      - ./:/app
-    entrypoint: ["sleep", "infinity"]
+      - ./:/src
 
