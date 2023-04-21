@@ -1,33 +1,34 @@
-FROM python:3 as build
+FROM python:3 as builder
 ARG BUILD_VERSION=0.10.0
 
 WORKDIR /src
+RUN mkdir -p /opt && python3 -m venv /opt/venv
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_DISABLE_ROOT_WARNING=1 \
-    PIP_ROOT_USER_ACTION=ignore
+    PIP_ROOT_USER_ACTION=ignore \
+    PIP_CACHE_DIR=/var/cache/pip
+
 COPY pyproject.toml Makefile /src/
 COPY hubs_bot/ /src/hubs_bot/
-RUN \
-    --mount=type=cache,target=/root/.cache/ \
+RUN --mount=type=cache,target=/var/cache/pip/ \
     pip install build~="$BUILD_VERSION" && \
     python -m build --wheel
 
+ENV PATH="/opt/venv/bin:$PATH" \
+    VIRTUAL_ENV="/opt/venv"
+
+RUN --mount=type=cache,target=/var/cache/pip/ \
+    pip install /src/dist/*.whl
+
 FROM python:3-slim as runtime
 CMD ["python", "-m", "hubs_bot"]
-WORKDIR /src
-ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    PIP_DISABLE_ROOT_WARNING=1 \
-    PIP_ROOT_USER_ACTION=ignore
+ENV PATH="/opt/venv/bin:$PATH" \
+    VIRTUAL_ENV="/opt/venv"
 
-RUN adduser --disabled-password bot
-COPY --from=build /src/dist/*.whl /tmp/
-RUN \
-    --mount=type=cache,target=/var/lib/apt/lists/ \
-    --mount=type=cache,target=/var/cache/ \
-    --mount=type=cache,target=/root/.cache/ \
-    apt-get update && \
-    apt-get install -y build-essential && \
-    pip install /tmp/*.whl && \
-    apt-get purge -y --auto-remove build-essential
+RUN groupadd --system --gid 888 bot && \
+    useradd --system --uid 888 --no-user-group --gid 888 \
+        --create-home --home-dir /var/lib/bot --shell /bin/bash bot
+
+COPY --from=builder /opt/venv /opt/venv
 
 USER bot
