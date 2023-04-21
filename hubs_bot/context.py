@@ -1,4 +1,5 @@
 from functools import cached_property
+from typing import Any
 
 import openai
 import requests
@@ -25,5 +26,5 @@ class Context:
         return resp.text
 
     @cached_property
-    def openai_completion(self) -> type[openai.Completion]:
+    def openai_completion(self) -> Any:
         return openai.Completion
