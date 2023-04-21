@@ -1,3 +1,6 @@
+from functools import cached_property
+
+import openai
 import requests
 from praw import Reddit
 
@@ -15,7 +18,12 @@ class Context:
             username=config.username,
             user_agent=config.username,
         )
+        openai.api_key = config.openai_key
 
     def http_get(self, url: str) -> str:
         resp = requests.get(url)
         return resp.text
+
+    @cached_property
+    def openai_completion(self) -> type[openai.Completion]:
+        return openai.Completion
