@@ -3,10 +3,11 @@ from collections.abc import Callable
 from dataclasses import dataclass
 
 from bs4 import BeautifulSoup
-from bs4.element import Tag
+from bs4.element import NavigableString, Tag
 from praw import Reddit
 from praw.reddit import Submission, Subreddit
 
+from hubs_bot.categorizer import Categorizer
 from hubs_bot.config import Config
 from hubs_bot.context import Context
 
@@ -28,6 +29,7 @@ class HubTimesBot:
         self.config = config
         self.reddit = context.reddit
         self.http_get = context.http_get
+        self.categorizer = Categorizer(context, config)
 
     def run(self) -> None:
         """
@@ -51,16 +53,16 @@ class HubTimesBot:
         html = self.http_get(self.config.hubtimes_url)
         soup = BeautifulSoup(html, "html.parser")
         link = soup.find(self.is_hub_times_link)
-        if not link:
+        if not isinstance(link, Tag):
             return None
 
         return HubTimesLink(url=self.get_url(link), headline=self.get_headline(link))
 
-    def is_hub_times_link(self, tag: Tag) -> bool:
+    def is_hub_times_link(self, tag: Tag | NavigableString) -> bool:
         """
         Look for a link that specifies that's tagged with a specific tag
         """
-        if tag.name == "a" and tag.has_attr("href"):
+        if isinstance(tag, Tag) and tag.name == "a" and tag.has_attr("href"):
             for news_tag in self.config.news_tags:
                 if tag.find(attrs={"data-c-ms": news_tag}):
                     return True
@@ -90,4 +92,5 @@ class HubTimesBot:
             title=link.headline, url=link.url, flair_id=self.config.subreddit_flair
         )
         submission.mod.approve()
+        self.categorizer.flair_submission(submission)
         logger.info(f"submitted link, {submission.id}")

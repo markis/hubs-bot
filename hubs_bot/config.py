@@ -34,3 +34,4 @@ class Config:
     password: str = os.environ.get("PASSWORD", "password")
     client_id: str = os.environ.get("CLIENT_ID", "client_id")
     client_secret: str = os.environ.get("CLIENT_SECRET", "client_secret")
+    openai_key: str = os.environ.get("OPEN_AI_KEY", "open_ai_key")

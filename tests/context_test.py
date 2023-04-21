@@ -11,6 +11,7 @@ def test_context_init() -> None:
 
     assert context
     assert isinstance(context.reddit, Reddit)
+    assert isinstance(context.openai_completion, type)
 
 
 def test_context_http_get() -> None:
