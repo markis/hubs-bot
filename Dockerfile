@@ -22,8 +22,8 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
 RUN adduser --disabled-password bot
 COPY --from=build /src/dist/*.whl /tmp/
 RUN \
-    --mount=type=cache,target=/var/lib/apt/lists \
-    --mount=type=cache,target=/var/cache \
+    --mount=type=cache,target=/var/lib/apt/lists/ \
+    --mount=type=cache,target=/var/cache/ \
     --mount=type=cache,target=/root/.cache/ \
     apt-get update && \
     apt-get install -y build-essential && \
