@@ -4,29 +4,29 @@ on:
   pull_request:
 
 jobs:
-  format-check:
-    name: format check
+  black-check:
+    name: black check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: markis/python-checker@main
       with:
-        cmd: ["black", "--check", "."]
+        cmd: black --check .
 
-  type-check:
-    name: type check
+  mypy-check:
+    name: mypy check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: markis/python-checker@main
       with:
-        cmd: ["mypy", "--install-types", "--non-interactive", "."]
+        cmd: mypy --install-types --non-interactive .
 
-  lint-check:
-    name: lint check
+  ruff-check:
+    name: ruff check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: markis/python-checker@main
       with:
-        cmd: ["ruff", "check", "."]
+        cmd: ruff check .
