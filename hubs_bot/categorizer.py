@@ -1,8 +1,7 @@
 import logging
 from textwrap import dedent
-from typing import Any, TypedDict, TypeGuard
+from typing import TYPE_CHECKING, Any, TypedDict, TypeGuard
 
-import openai
 from praw.models.reddit.submission import SubmissionFlair
 from praw.reddit import Submission
 
@@ -10,6 +9,9 @@ from hubs_bot.config import Config
 from hubs_bot.context import Context
 
 logger = logging.getLogger(__name__)
+
+if TYPE_CHECKING:
+    import openai
 
 
 class Flair(TypedDict):
@@ -59,7 +61,7 @@ class Categorizer:
             """
         )
 
-        resp: Any = self.openai_completion.create(
+        resp: Any = self.openai_completion.create(  # type: ignore[no-untyped-call]
             model="text-davinci-003",
             prompt=prompt,
         )
