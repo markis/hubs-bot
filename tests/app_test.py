@@ -20,12 +20,14 @@ def hub_times_bot() -> HubTimesBot:
 
 
 @pytest.mark.block_network()
+@pytest.mark.integration()
 @pytest.mark.vcr()
 def test_bot_run(hub_times_bot: HubTimesBot) -> None:
     hub_times_bot.run()
 
 
 @pytest.mark.block_network()
+@pytest.mark.integration()
 @pytest.mark.vcr(record_mode="never")
 def test_bot_with_real_duplicate_link(hub_times_bot: HubTimesBot) -> None:
     # This test will fail if the link is already submitted
@@ -63,6 +65,7 @@ def get_mock_hub_times_bot() -> tuple[HubTimesBot, Mock, Mock]:
     return HubTimesBot(mock_context, mock_config), mock_context, mock_reddit
 
 
+@pytest.mark.unit()
 def test_bot_with_link() -> None:
     bot, mock_context, mock_reddit = get_mock_hub_times_bot()
     test_page = """
@@ -82,6 +85,7 @@ def test_bot_with_link() -> None:
     )
 
 
+@pytest.mark.unit()
 def test_bot_with_no_link() -> None:
     bot, mock_context, mock_reddit = get_mock_hub_times_bot()
     test_page = "<html></html>"
@@ -92,6 +96,7 @@ def test_bot_with_no_link() -> None:
     mock_reddit.subreddit().submit.assert_not_called()
 
 
+@pytest.mark.unit()
 def test_bot_submit_link() -> None:
     bot, _, mock_reddit = get_mock_hub_times_bot()
     mock_link = Mock(spec=HubTimesLink, headline="test", url="http://test.com")
@@ -103,6 +108,7 @@ def test_bot_submit_link() -> None:
     mock_sr.submit.assert_called_with(title="test", url="http://test.com", flair_id=ANY)
 
 
+@pytest.mark.unit()
 def test_bot_submit_duplicate_link() -> None:
     bot, _, mock_reddit = get_mock_hub_times_bot()
     mock_link = Mock(

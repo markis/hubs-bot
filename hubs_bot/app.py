@@ -1,18 +1,22 @@
 import logging
 from collections.abc import Callable
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 from bs4 import BeautifulSoup
 from bs4.element import NavigableString, Tag
 from praw import Reddit
 from praw.models.reddit.redditor import Redditor
-from praw.reddit import Submission, Subreddit
 
 from hubs_bot.categorizer import Categorizer
 from hubs_bot.config import Config
 from hubs_bot.context import Context
 
 logger = logging.getLogger(__name__)
+
+
+if TYPE_CHECKING:  # pragma: no cover
+    from praw.reddit import Submission, Subreddit
 
 
 @dataclass
@@ -44,7 +48,7 @@ class HubTimesBot:
         if not link:
             logger.info("no link found")
         else:
-            logger.info(f"link found: {link}")
+            logger.info("link found: %s", link)
             self.submit_link(link)
 
     def get_hub_times_link(self) -> HubTimesLink | None:
@@ -101,5 +105,5 @@ class HubTimesBot:
         )
         submission.mod.approve()
         self.categorizer.flair_submission(submission)
-        logger.info(f"submitted link, {submission.id}")
+        logger.info("submitted link %s", submission.id)
         return True

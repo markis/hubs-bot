@@ -23,7 +23,7 @@ class Context:
         openai.api_key = config.openai_key
 
     def http_get(self, url: str) -> str:
-        resp = requests.get(url)
+        resp = requests.get(url, timeout=10)
         return resp.text
 
     @cached_property
