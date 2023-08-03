@@ -1582,11 +1582,6 @@ interactions:
       Sports, Event, Announcement, PSA, People, Government, Business, Community, Technology,
       Memory\n\nHow would you categorize the following news article:\n\nAbortion opponent
       State Sen. Kristina Roegner to become foster parent\n"}'
-    """\nUsing only one of the following
-      categories:\nPolitics, Coronavirus, Crime, Opinion, News, Question, Phase II,
-      Sports, Event, Announcement, PSA, People, Government, Business, Community, Technology,
-      Memory\n\nHow would you categorize the following news article:\n\nAbortion opponent
-      State Sen. Kristina Roegner to become foster parent\n"""
     headers:
       Accept:
       - '*/*'
