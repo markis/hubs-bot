@@ -14,7 +14,6 @@ requests = "^2.28.2"
 beautifulsoup4 = "^4.11.2"
 praw = "^7.7.1"
 openai = "^0.27.8"
-pytest-recording = "^0.13.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
@@ -24,16 +23,22 @@ types-requests = "^2.28.11.15"
 
 [tool.poetry.group.test.dependencies]
 coverage = {extras = ["toml"], version = "^7.2.1"}
+hypothesis = "^6.82.0"
 pytest = "^7.2.2"
+pytest-cov = "^4.1.0"
+pytest-recording = "^0.13.0"
 
 [tool.coverage.run]
 source = ["hubs_bot/"]
 omit = ["*/__main__.py"]
 
 [tool.pytest.ini_options]
-minversion = "6.0"
-addopts = "-ra -q"
+addopts = "-ra --cov hubs_bot"
 testpaths = ["tests"]
+markers = [
+  "unit",
+  "integration"
+]
 
 [tool.black]
 target-version = ["py310"]
