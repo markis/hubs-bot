@@ -26,7 +26,7 @@ def is_flair(value: Any) -> TypeGuard[Flair]:
 
 class Categorizer:
     config: Config
-    openai_completion: type[openai.Completion]
+    openai_completion: openai.Completion
 
     def __init__(self, context: Context, config: Config) -> None:
         self.config = config
