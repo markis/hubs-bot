@@ -13,25 +13,29 @@ def create_set_factory(
         value = env.get(env_name, default)
         if isinstance(value, str):
             return set(value.split(","))
-        elif isinstance(value, set):
+        if isinstance(value, set):
             return value
-        else:
-            raise ValueError(f"${env_name} is not set correctly")
+        msg = f"${env_name} is not set correctly"
+        raise ValueError(msg)
 
     return _get_set
 
 
 @dataclass
 class Config:
-    base_url: str = os.environ.get("BASE_URL", BASE_URL)
-    hubtimes_url: str = os.environ.get("HUBTIMES_URL", f"{BASE_URL}/communities/hudsonhubtimes/")
-    subreddit: str = os.environ.get("SUBREDDIT", "hudsonohtest")
-    subreddit_flair: str = os.environ.get("SUBREDDIT_FLAIR", "93312688-b815-11ea-917e-0e65e9cea44f")
+    base_url: str = field(default=os.environ.get("BASE_URL", BASE_URL))
+    hubtimes_url: str = field(
+        default=os.environ.get("HUBTIMES_URL", f"{BASE_URL}/communities/hudsonhubtimes/")
+    )
+    subreddit: str = field(default=os.environ.get("SUBREDDIT", "hudsonohtest"))
+    subreddit_flair: str = field(
+        default=os.environ.get("SUBREDDIT_FLAIR", "93312688-b815-11ea-917e-0e65e9cea44f")
+    )
     news_tags: set[str] = field(
         default_factory=create_set_factory("NEWS_TAGS", NEWS_TAGS, os.environ)
     )
-    username: str = os.environ.get("USERNAME", "hubs-bot")
-    password: str = os.environ.get("PASSWORD", "password")
-    client_id: str = os.environ.get("CLIENT_ID", "client_id")
-    client_secret: str = os.environ.get("CLIENT_SECRET", "client_secret")
-    openai_key: str = os.environ.get("OPEN_AI_KEY", "open_ai_key")
+    username: str = field(default=os.environ.get("USERNAME", "hubs-bot"))
+    password: str = field(default=os.environ.get("PASSWORD", "password"))
+    client_id: str = field(default=os.environ.get("CLIENT_ID", "client_id"))
+    client_secret: str = field(default=os.environ.get("CLIENT_SECRET", "client_secret"))
+    openai_key: str = field(default=os.environ.get("OPEN_AI_KEY", "open_ai_key"))

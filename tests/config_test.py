@@ -11,12 +11,12 @@ from hubs_bot.config import Config, create_set_factory
 
 @pytest.mark.unit()
 def test_config_with_mock_env() -> None:
-    mock_environ = dict(
-        CLIENT_ID="test",
-        CLIENT_SECRET="test",
-        USERNAME="test",
-        PASSWORD="test",
-    )
+    mock_environ = {
+        "CLIENT_ID": "test",
+        "CLIENT_SECRET": "test",
+        "USERNAME": "test",
+        "PASSWORD": "test",
+    }
     with mock.patch.dict(os.environ, mock_environ):
         config = Config()
 
@@ -40,12 +40,12 @@ def test_set_factory_set_success() -> None:
 
 @pytest.mark.unit()
 def test_set_factory_failure() -> None:
-    with pytest.raises(ValueError):
-        test_env: Any = {"foo": 1}
+    test_env: Any = {"foo": 1}
+    with pytest.raises(ValueError, match=r"\$foo is not set correctly"):
         create_set_factory("foo", set(), test_env)()
 
 
-def build_url_strategy():
+def build_url_strategy() -> st.SearchStrategy[str]:
     def _create_url(
         scheme: str, domain: str, path: str, query: dict[str, str], fragment: str
     ) -> str:
@@ -76,7 +76,7 @@ def build_url_strategy():
     single_domain_name_strategy = st.lists(url_text_strategy, min_size=1, max_size=5)
     domain_name_strategy = single_domain_name_strategy.map(".".join)
     query_strategy = st.dictionaries(keys=url_text_strategy, values=url_text_strategy)
-    url_strategy = st.builds(
+    return st.builds(
         _create_url,
         scheme=scheme_strategy,
         domain=domain_name_strategy,
@@ -84,8 +84,6 @@ def build_url_strategy():
         query=query_strategy,
         fragment=fragment_strategy,
     )
-
-    return url_strategy
 
 
 STRING_STRATEGY: Final = st.text(alphabet=st.characters(min_codepoint=32, max_codepoint=126))
@@ -117,7 +115,7 @@ def test_config_instantiation(
     client_id: str,
     client_secret: str,
     openai_key: str,
-):
+) -> None:
     config = Config(
         base_url=base_url,
         hubtimes_url=hubtimes_url,

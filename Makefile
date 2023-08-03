@@ -16,7 +16,7 @@ fix:
 	poetry run black ${PWD}
 
 test:
-	poetry run pytest --cov-report html
+	poetry run pytest --cov-report html --cov-report term
 
 clean:
 	poetry env remove --all

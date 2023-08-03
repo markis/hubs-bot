@@ -1,27 +1,30 @@
 import logging
 from textwrap import dedent
-from typing import Any, TypedDict, TypeGuard
+from typing import TYPE_CHECKING, Any, TypeGuard
 
 import openai
-from praw.models.reddit.submission import SubmissionFlair
 from praw.reddit import Submission
+from typing_extensions import NotRequired, TypedDict
 
 from hubs_bot.config import Config
 from hubs_bot.context import Context
 
 logger = logging.getLogger(__name__)
 
+if TYPE_CHECKING:  # pragma: no cover
+    from praw.models.reddit.submission import SubmissionFlair
+
 
 class Flair(TypedDict):
-    flair_css_class: str
     flair_template_id: str
-    flair_text_editable: bool
-    flair_position: str
     flair_text: str
+    flair_css_class: NotRequired[str]
+    flair_text_editable: NotRequired[bool]
+    flair_position: NotRequired[str]
 
 
 def is_flair(value: Any) -> TypeGuard[Flair]:
-    return isinstance(value, dict)
+    return isinstance(value, dict) and all(key in value for key in Flair.__required_keys__)
 
 
 class Categorizer:
