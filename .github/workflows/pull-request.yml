@@ -52,7 +52,7 @@ jobs:
         uses: actions/setup-python@v1
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Install mypy
+      - name: Install pytest
         run: pip install poetry && poetry install
-      - name: Run mypy
+      - name: Run pytest
         run: poetry run pytest --block-network
