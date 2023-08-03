@@ -12,8 +12,9 @@ description = "hub times bot for r/HudsonOH"
 python = "^3.10"
 requests = "^2.28.2"
 beautifulsoup4 = "^4.11.2"
-praw = "^7.7.0"
+praw = "^7.7.1"
 openai = "^0.27.4"
+pytest-recording = "^0.13.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"

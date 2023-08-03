@@ -18,6 +18,7 @@ class Context:
             password=config.password,
             username=config.username,
             user_agent=config.username,
+            check_for_updates=False,
         )
         openai.api_key = config.openai_key
 

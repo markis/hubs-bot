@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from bs4 import BeautifulSoup
 from bs4.element import NavigableString, Tag
 from praw import Reddit
+from praw.models.reddit.redditor import Redditor
 from praw.reddit import Submission, Subreddit
 
 from hubs_bot.categorizer import Categorizer
@@ -60,7 +61,7 @@ class HubTimesBot:
 
     def is_hub_times_link(self, tag: Tag | NavigableString) -> bool:
         """
-        Look for a link that specifies that's tagged with a specific tag
+        Look for links with specific tags
         """
         if isinstance(tag, Tag) and tag.name == "a" and tag.has_attr("href"):
             for news_tag in self.config.news_tags:
@@ -75,7 +76,7 @@ class HubTimesBot:
     def get_url(self, tag: Tag) -> str:
         return str(self.config.base_url + tag.attrs["href"])
 
-    def submit_link(self, link: HubTimesLink) -> None:
+    def submit_link(self, link: HubTimesLink) -> bool:
         """
         Submit the link to Reddit
         """
@@ -83,10 +84,17 @@ class HubTimesBot:
         reddit.validate_on_submit = True
         sr: Subreddit = reddit.subreddit(self.config.subreddit)
         submission: Submission
-        for submission in sr.new():
+        me = reddit.user.me()
+        if me and isinstance(me, Redditor):
+            for submission in me.submissions.new(limit=10):
+                if submission.url == link.url:
+                    logger.info("link already exists, don't submit")
+                    return False
+
+        for submission in sr.new(limit=10):
             if submission.url == link.url:
                 logger.info("link already exists, don't submit")
-                return
+                return False
 
         submission = sr.submit(
             title=link.headline, url=link.url, flair_id=self.config.subreddit_flair
@@ -94,3 +102,4 @@ class HubTimesBot:
         submission.mod.approve()
         self.categorizer.flair_submission(submission)
         logger.info(f"submitted link, {submission.id}")
+        return True
