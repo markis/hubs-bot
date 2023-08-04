@@ -19,7 +19,12 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
   PIP_ROOT_USER_ACTION=ignore
 
 RUN --mount=type=bind,from=builder,src=/src/dist,target=/src/dist \
-  pip install --no-cache-dir /src/dist/*.whl
+  --mount=type=cache,target=/var/lib/apt/lists \
+  --mount=type=cache,target=/var/cache \
+  --mount=type=tmpfs,target=/var/log \
+  apt-get update; \
+  apt-get install -y --no-install-recommends build-essential; \
+  pip install --no-cache-dir /src/dist/*.whl;
 
 RUN groupadd --system --gid 888 bot && \
   useradd --system --uid 888 --no-user-group --gid 888 \
