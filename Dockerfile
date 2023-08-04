@@ -24,7 +24,9 @@ RUN --mount=type=bind,from=builder,src=/src/dist,target=/src/dist \
   --mount=type=tmpfs,target=/var/log \
   apt-get update; \
   apt-get install -y --no-install-recommends build-essential; \
-  pip install --no-cache-dir /src/dist/*.whl;
+  pip install --no-cache-dir /src/dist/*.whl; \
+  apt-get purge build-essential; \
+  apt-get autoremove -y;
 
 RUN groupadd --system --gid 888 bot && \
   useradd --system --uid 888 --no-user-group --gid 888 \
