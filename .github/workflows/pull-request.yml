@@ -9,50 +9,54 @@ jobs:
     name: black check
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Python
-        uses: actions/setup-python@v1
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Install mypy
-        run: pip install poetry && poetry install
-      - name: Run mypy
-        run: poetry run black --check .
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          cache: 'poetry'
+      - run: pip install poetry
+      - run: poetry install
+      - run: poetry run black --check .
 
   mypy-check:
     name: mypy check
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Python
-        uses: actions/setup-python@v1
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Install mypy
-        run: pip install poetry && poetry install
-      - name: Run mypy
-        run: poetry run mypy .
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          cache: 'poetry'
+      - run: pip install poetry
+      - run: poetry install
+      - run: poetry run mypy .
 
   ruff-check:
     name: ruff check
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Python
-        uses: actions/setup-python@v1
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Install mypy
-        run: pip install poetry && poetry install
-      - name: Run mypy
-        run: poetry run ruff check .
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          cache: 'poetry'
+      - run: pip install poetry
+      - run: poetry install
+      - run: poetry run ruff check .
 
   tests:
     name: run tests
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Python
-        uses: actions/setup-python@v1
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Install pytest
-        run: pip install poetry && poetry install
-      - name: Run pytest
-        run: poetry run pytest --block-network
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          cache: 'poetry'
+      - run: pip install poetry
+      - run: poetry install
+      - run: poetry run pytest --block-network
