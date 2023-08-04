@@ -1,4 +1,4 @@
-FROM python:3 as builder
+FROM python:3.11 as builder
 ARG BUILD_VERSION=0.10.0
 
 WORKDIR /src
@@ -20,7 +20,7 @@ ENV PATH="/opt/venv/bin:$PATH" \
 RUN --mount=type=cache,target=/var/cache/pip/ \
     pip install /src/dist/*.whl
 
-FROM python:3-slim as runtime
+FROM python:3.11-slim as runtime
 CMD ["python", "-m", "hubs_bot"]
 ENV PATH="/opt/venv/bin:$PATH" \
     VIRTUAL_ENV="/opt/venv"

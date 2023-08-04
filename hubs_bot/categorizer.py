@@ -1,10 +1,9 @@
 import logging
 from textwrap import dedent
-from typing import TYPE_CHECKING, Any, TypeGuard
+from typing import TYPE_CHECKING, Any, NotRequired, TypedDict, TypeGuard
 
 import openai
 from praw.reddit import Submission
-from typing_extensions import NotRequired, TypedDict
 
 from hubs_bot.config import Config
 from hubs_bot.context import Context
