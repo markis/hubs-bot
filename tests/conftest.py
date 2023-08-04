@@ -21,7 +21,6 @@ def vcr_config() -> dict[str, Any]:
     return {
         "filter_headers": [*FILTERS, "cookie"],
         "filter_post_data_parameters": FILTERS,
-        "record_mode": "once",
         "serializer": "yaml",
         "decode_compressed_response": True,
     }

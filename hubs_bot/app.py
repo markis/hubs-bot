@@ -29,12 +29,13 @@ class HubTimesBot:
     config: Config
     reddit: Reddit
     http_get: Callable[[str], str]
+    categorizer: Categorizer
 
     def __init__(self, context: Context, config: Config) -> None:
         self.config = config
         self.reddit = context.reddit
         self.http_get = context.http_get
-        self.categorizer = Categorizer(context, config)
+        self.categorizer = context.categorizer
 
     def run(self) -> None:
         """
