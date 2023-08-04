@@ -14,7 +14,6 @@ jobs:
         run: pipx install poetry
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
           cache: 'poetry'
       - run: poetry install
       - run: poetry run black --check .
@@ -28,7 +27,6 @@ jobs:
         run: pipx install poetry
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
           cache: 'poetry'
       - run: poetry install
       - run: poetry run mypy .
@@ -42,7 +40,6 @@ jobs:
         run: pipx install poetry
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
           cache: 'poetry'
       - run: poetry install
       - run: poetry run ruff check .
@@ -56,7 +53,6 @@ jobs:
         run: pipx install poetry
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
           cache: 'poetry'
       - run: poetry install
-      - run: poetry run pytest --block-network
+      - run: poetry run pytest --block-network --cov-fail-under=100
