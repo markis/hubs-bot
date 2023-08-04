@@ -11,4 +11,3 @@ services:
         - "linux/arm/v7"
     volumes:
       - ./:/src
-
