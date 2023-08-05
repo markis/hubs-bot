@@ -19,16 +19,14 @@ def hub_times_bot() -> HubTimesBot:
     return HubTimesBot(context, config)
 
 
-@pytest.mark.block_network()
 @pytest.mark.integration()
 @pytest.mark.vcr()
 def test_bot_run(hub_times_bot: HubTimesBot) -> None:
     hub_times_bot.run()
 
 
-@pytest.mark.block_network()
 @pytest.mark.integration()
-@pytest.mark.vcr(record_mode="never")
+@pytest.mark.vcr(record_mode="none")
 def test_bot_with_real_duplicate_link(hub_times_bot: HubTimesBot) -> None:
     # This test will fail if the link is already submitted
     # DO NOT DELETE THE CASSETTE FOR THIS TEST
@@ -50,7 +48,7 @@ def get_mock_hub_times_bot() -> tuple[HubTimesBot, Mock, Mock]:
         spec=Completion, create=Mock(return_value=Mock(choices=[Mock(text="test")]))
     )
     mock_context = Mock(spec=Context, reddit=mock_reddit, openai_completion=mock_openai_completion)
-    mock_config = Mock(spec=Config, base_url="http://test.com", news_tags={"LOCAL"})
+    mock_config = Mock(spec=Config, base_url="http://test.com", news_tags=("LOCAL",))
     mock_submission = Mock(
         spec=Submission,
         title="Test post",
@@ -66,6 +64,7 @@ def get_mock_hub_times_bot() -> tuple[HubTimesBot, Mock, Mock]:
 
 
 @pytest.mark.unit()
+@pytest.mark.block_network()
 def test_bot_with_link() -> None:
     bot, mock_context, mock_reddit = get_mock_hub_times_bot()
     test_page = """
@@ -86,6 +85,7 @@ def test_bot_with_link() -> None:
 
 
 @pytest.mark.unit()
+@pytest.mark.block_network()
 def test_bot_with_no_link() -> None:
     bot, mock_context, mock_reddit = get_mock_hub_times_bot()
     test_page = "<html></html>"
@@ -97,6 +97,7 @@ def test_bot_with_no_link() -> None:
 
 
 @pytest.mark.unit()
+@pytest.mark.block_network()
 def test_bot_submit_link() -> None:
     bot, _, mock_reddit = get_mock_hub_times_bot()
     mock_link = Mock(spec=HubTimesLink, headline="test", url="http://test.com")
@@ -109,6 +110,7 @@ def test_bot_submit_link() -> None:
 
 
 @pytest.mark.unit()
+@pytest.mark.block_network()
 def test_bot_submit_duplicate_link() -> None:
     bot, _, mock_reddit = get_mock_hub_times_bot()
     mock_link = Mock(

@@ -2,13 +2,18 @@ PWD := "."
 .PHONY: venv lint test build clean
 
 all: install lint test
+lint: ruff black mypy
 
 install:
 	poetry install
 
-lint:
-	poetry run ruff check ${PWD}
+black:
 	poetry run black --check ${PWD}
+
+ruff:
+	poetry run ruff check ${PWD}
+
+mypy:
 	poetry run mypy ${PWD}
 
 fix:
@@ -16,7 +21,7 @@ fix:
 	poetry run black ${PWD}
 
 test:
-	poetry run pytest --cov-report html --cov-report term
+	@poetry run pytest --cov-report html --cov-report term
 
 clean:
 	poetry env remove --all

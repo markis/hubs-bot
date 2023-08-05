@@ -2,6 +2,7 @@ import logging
 from collections.abc import Callable
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
+from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
 from bs4.element import NavigableString, Tag
@@ -29,12 +30,13 @@ class HubTimesBot:
     config: Config
     reddit: Reddit
     http_get: Callable[[str], str]
+    categorizer: Categorizer
 
     def __init__(self, context: Context, config: Config) -> None:
         self.config = config
         self.reddit = context.reddit
         self.http_get = context.http_get
-        self.categorizer = Categorizer(context, config)
+        self.categorizer = context.categorizer
 
     def run(self) -> None:
         """
@@ -78,7 +80,7 @@ class HubTimesBot:
         return text.strip()
 
     def get_url(self, tag: Tag) -> str:
-        return str(self.config.base_url + tag.attrs["href"])
+        return urljoin(self.config.base_url, tag.attrs["href"])
 
     def submit_link(self, link: HubTimesLink) -> bool:
         """

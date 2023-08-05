@@ -9,7 +9,7 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.28.2
+      - python-requests/2.31.0
     method: GET
     uri: https://www.beaconjournal.com/communities/hudsonhubtimes/
   response:
@@ -332,76 +332,84 @@ interactions:
         class=\"gnt_x_sl gnt_x_hi\"></div></aside><div class=gnt_bc></div><main class=gnt_cw><nav
         class=gnt_sn aria-label=\"Hudson Hub Times section navigation\"><a class=\"gnt_sn_t
         gnt_sn_t__hv\" href=/communities/ data-t-l=:s|v|c|communities elementtiming=page-title>Communities</a><div
-        class=gnt_tn>Hudson Hub Times</div></nav><div class=gnt_pr><a href=/story/news/local/2023/08/03/state-senator-kristina-roegner-r-hudson-and-family-on-track-to-foster-children-after-op-ed/70456740007/
+        class=gnt_tn>Hudson Hub Times</div></nav><div class=gnt_pr><a href=/story/news/local/2023/08/04/hudson-pursues-vision-for-redefined-and-expanded-water-infrastructure/70476154007/
         data-t-l=\":top table|o|c|main hero\" class=gnt_m_he><img class=gnt_m_he_i
-        alt=\"\" src=\"/gcdn/presto/2023/07/29/NABJ/3bf9bdac-cded-45d0-9f53-4a36cf86b28f-roegner_adoption_1.jpg?crop=1999,1125,x0,y0&width=660&height=370&format=pjpg&auto=webp\"
-        elementtiming=mod-hero-image srcset=\"/gcdn/presto/2023/07/29/NABJ/3bf9bdac-cded-45d0-9f53-4a36cf86b28f-roegner_adoption_1.jpg?crop=1999,1125,x0,y0&width=1320&height=740&format=pjpg&auto=webp
-        2x\" decoding=async fetchpriority=high /> Abortion opponent State Sen. Kristina
-        Roegner to become foster parent<div class=\"gnt_sbt gnt_sbt__ms gnt_sbt__ts
-        gnt_sbt__mg\" data-c-ms=LOCAL data-c-dt=\"6:02 a.m. ET Aug. 3\"></div></a><div
-        class=\"gnt_m gnt_m_flm\" data-g-r=\"lazy lazy_p\" data-gl-type=img><a href=/story/opinion/columns/2023/08/02/summit-county-property-values-increase-34-percent-scalise-explains-process/70501299007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|1 data-c-br=\"Updated property valuations
+        alt=\"\" src=\"/gcdn/presto/2023/07/29/NABJ/f107167b-5042-44b1-9f85-46981eb71056-hudson_water_2.jpg?crop=1999,1125,x0,y113&width=660&height=370&format=pjpg&auto=webp\"
+        elementtiming=mod-hero-image srcset=\"/gcdn/presto/2023/07/29/NABJ/f107167b-5042-44b1-9f85-46981eb71056-hudson_water_2.jpg?crop=1999,1125,x0,y113&width=1320&height=740&format=pjpg&auto=webp
+        2x\" decoding=async fetchpriority=high /> Hudson charts a new course for city's
+        water infrastructure<div class=\"gnt_sbt gnt_sbt__ms gnt_sbt__ts gnt_sbt__mg\"
+        data-c-ms=LOCAL data-c-dt=\"6:01 a.m. ET Aug. 4\"></div></a><div class=\"gnt_m
+        gnt_m_flm\" data-g-r=\"lazy lazy_p\" data-gl-type=img><a href=/story/news/local/2023/08/03/state-senator-kristina-roegner-r-hudson-and-family-on-track-to-foster-children-after-op-ed/70456740007/
+        class=gnt_m_flm_a data-t-l=:list|o|c|1 data-c-br=\"After she penned an op-ed
+        last year vowing to foster children, State Sen. Kristina Roegner and her family
+        are preparing for their first placement.\"><img class=gnt_m_flm_i data-g-r=lazy_c
+        data-gl-src=\"/gcdn/presto/2023/07/29/NABJ/3bf9bdac-cded-45d0-9f53-4a36cf86b28f-roegner_adoption_1.jpg?crop=1311,1311,x300,y0&width=120&height=120&format=pjpg&auto=webp\"
+        data-gl-srcset=\"/gcdn/presto/2023/07/29/NABJ/3bf9bdac-cded-45d0-9f53-4a36cf86b28f-roegner_adoption_1.jpg?crop=1311,1311,x300,y0&width=240&height=240&format=pjpg&auto=webp
+        2x\" decoding=async alt=\"\"/> Abortion opponent State Sen. Kristina Roegner
+        to become foster parent<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms gnt_sbt__ts\"
+        data-c-ms=LOCAL data-c-dt=\"6:02 a.m. ET Aug. 3\"></div></a><a href=/story/opinion/columns/2023/08/02/summit-county-property-values-increase-34-percent-scalise-explains-process/70501299007/
+        class=gnt_m_flm_a data-t-l=:list|o|c|2 data-c-br=\"Updated property valuations
         are being mailed to Summit County property owners beginning this week. Here's
         how the process works.\"><img class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/authoring/authoring-images/2023/07/31/NABJ/70501320007-scalise-headshot.jpg?crop=619,619,x0,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/authoring/authoring-images/2023/07/31/NABJ/70501320007-scalise-headshot.jpg?crop=619,619,x0,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Scalise: Why Summit property values are rising
         and how to file appeals<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms gnt_sbt__ts
-        gnt_sbt__op\" data-c-ms=COLUMNS data-c-dt=\"8:27 a.m. ET Aug. 2\">Kristen
-        M. Scalise\_</div></a><a href=/story/news/education/2023/08/01/first-days-of-school-summit-and-medina-counties-akron-public-schools-calendar-2023-2024/70480268007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|2 data-c-br=\"It's already that time
+        gnt_sbt__op\" data-c-ms=COLUMNS data-c-dt=\"Aug. 2, 2023\">Kristen M. Scalise\_</div></a><a
+        href=/story/news/education/2023/08/01/first-days-of-school-summit-and-medina-counties-akron-public-schools-calendar-2023-2024/70480268007/
+        class=gnt_m_flm_a data-t-l=:list|o|c|3 data-c-br=\"It's already that time
         of year again. Here are the start dates for all the public schools in Summit
         and Medina counties.\"><img class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/presto/2021/11/19/NABJ/0d479087-d1c3-45a8-b1f3-02aad7cb82ef-dayofshortages_apsbus_5.JPG?crop=1052,1052,x771,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/presto/2021/11/19/NABJ/0d479087-d1c3-45a8-b1f3-02aad7cb82ef-dayofshortages_apsbus_5.JPG?crop=1052,1052,x771,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> When does school start?: List of first days
         in Summit, Medina counties<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms gnt_sbt__ts\"
         data-c-ms=EDUCATION data-c-dt=\"Aug. 1, 2023\"></div></a><a href=/story/news/local/communities/hudson-hub/2023/07/28/hudson-senior-network-creates-phone-number-to-assist-hudson-seniors/70476227007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|3 data-c-br=\"Hudson's senior residents
+        class=gnt_m_flm_a data-t-l=:list|o|c|4 data-c-br=\"Hudson's senior residents
         can now call a number and leave a message to inquire about events and request
         non-emergency assistance\"><img class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/-mm-/9f8ebf9762f7ae22d154daf2982ae076551252d0/c=172-0-852-680/local/-/media/2021/05/30/Aberdeen/b332aea9f7e6689c05e0d343c29f3cc8.jpg?width=120&height=120&fit=crop&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/-mm-/9f8ebf9762f7ae22d154daf2982ae076551252d0/c=172-0-852-680/local/-/media/2021/05/30/Aberdeen/b332aea9f7e6689c05e0d343c29f3cc8.jpg?width=240&height=240&fit=crop&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Hudson's seniors now have a numbr to call for
-        information, assistance<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms gnt_sbt__ts\"
-        data-c-ms=\"HUDSON HUB TIMES\" data-c-dt=\"July 28, 2023\"></div></a><a href=/story/news/2023/07/28/where-to-find-a-splash-pad-in-greater-akron-amid-scorching-heat/70476805007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|4 data-c-br=\"Splash parks in the region
+        information, assistance<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=\"HUDSON
+        HUB TIMES\"></div></a><a href=/story/news/2023/07/28/where-to-find-a-splash-pad-in-greater-akron-amid-scorching-heat/70476805007/
+        class=gnt_m_flm_a data-t-l=:list|o|c|5 data-c-br=\"Splash parks in the region
         offer a free way to cool off and let the kids and parents have some fun too.\"><img
         class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/presto/2022/08/25/NABJ/fc44a378-4b32-428f-8da6-1c72214ce4d0-feat_splashpad_2.jpg?crop=1268,1268,x200,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/presto/2022/08/25/NABJ/fc44a378-4b32-428f-8da6-1c72214ce4d0-feat_splashpad_2.jpg?crop=1268,1268,x200,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Where to find a splash pad in Greater Akron
-        amid the scorching heat<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms gnt_sbt__ts\"
-        data-c-ms=NEWS data-c-dt=\"July 28, 2023\"></div></a><a href=/story/news/local/2023/07/27/hudson-mart-returns-sunday-with-food-vendors-and-music/70477155007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|5 data-c-br=\"On Sunday, Hudson's downtown
+        amid the scorching heat<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=NEWS></div></a><a
+        href=/story/news/local/2023/07/27/hudson-mart-returns-sunday-with-food-vendors-and-music/70477155007/
+        class=gnt_m_flm_a data-t-l=:list|o|c|6 data-c-br=\"On Sunday, Hudson's downtown
         greens will fill with vendors, music, and food as HUDSON mART returns from
         10 a.m. to 5 p.m.\"><img class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/presto/2021/09/08/NABJ/abd6c9a5-78c6-4430-85ee-c157aba22eda-HH_hudsonmart_2.jpg?crop=1300,1300,x350,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/presto/2021/09/08/NABJ/abd6c9a5-78c6-4430-85ee-c157aba22eda-HH_hudsonmart_2.jpg?crop=1300,1300,x350,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Downtown Hudson greens to fill with vendors
-        and more on Sunday<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms gnt_sbt__ts\"
-        data-c-ms=LOCAL data-c-dt=\"July 27, 2023\"></div></a><a href=/story/news/local/2023/07/25/5-5-mill-tax-levy-to-appear-before-hudson-voters-in-november/70455491007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|6 data-c-br=\"A new 5.5-mill tax levy
+        and more on Sunday<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=LOCAL></div></a><a
+        rel=sponsored referrerpolicy=no-referrer-when-downgrade class=\"gnt_x__nft
+        gnt_m_flm_a\" data-x-src=\"https://securepubads.g.doubleclick.net/gampad/adx?t=position%3Dnative-front_tile&iu=7103%2Foh-akron-C6682%2Fnative-front_tile%2Fnews%2Flocal%2Fhudson-hub_main&sz=2x3&cust_params=cst_section%3Dnews%26cst_subsection%3Dlocal%26cst_topic%3Dhudson-hub_main%26pageType%3Dsubsection-front%26property%3DNABJ%26sitepage%3DNABJ%2Fnews%2Flocal%2Fcommunities%2Fhudson-hub%26ssts_section%3Dnews%26ssts_subsection%3Dlocal%26ssts_topic%3Dcommunities%26ssts_subtopic%3Dhudson-hub\"
+        data-t-l=\":list|o|c|branded content tile\" data-x-u=/7103/oh-akron-C6682/native-front_tile/news/local/hudson-hub_main
+        data-x-sx=native-front_tile data-x-bc=%3Cimg%20class%3D%22gnt_m_flm_i%22%20src%3D%22%7Bis%7D%22%20alt%20decoding%3D%22async%22%20loading%3D%22lazy%22%20crossorigin%3E%7Bti%7D%3Cdiv%20class%3D%22gnt_m_flm_sbt%20gnt_sbt%20gnt_sbt__ms%22%20data-c-ms%3D%22%7Blb%7D%22%3E%3C%2Fdiv%3E
+        data-x-sm=cPlrSetup data-x-em=egFb data-g-r=base_nft data-x-btb></a> <a href=/story/news/local/2023/07/25/5-5-mill-tax-levy-to-appear-before-hudson-voters-in-november/70455491007/
+        class=gnt_m_flm_a data-t-l=:list|o|c|8 data-c-br=\"A new 5.5-mill tax levy
         for school district operating funds will be before Hudson voters in November.\"><img
         class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/-mm-/0c7a15e61349acb9c9150820e762b1b56b0668bb/c=350-0-2450-2100/local/-/media/2020/08/18/KentWeeklies/ghows-OH-306049872-e742d173.jpg?width=120&height=120&fit=crop&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/-mm-/0c7a15e61349acb9c9150820e762b1b56b0668bb/c=350-0-2450-2100/local/-/media/2020/08/18/KentWeeklies/ghows-OH-306049872-e742d173.jpg?width=240&height=240&fit=crop&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Hudson voters to decide on school district
         tax levy in November<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=LOCAL></div></a><a
-        rel=sponsored referrerpolicy=no-referrer-when-downgrade class=\"gnt_x__nft
-        gnt_m_flm_a\" data-x-src=\"https://securepubads.g.doubleclick.net/gampad/adx?t=position%3Dnative-front_tile&iu=7103%2Foh-akron-C6682%2Fnative-front_tile%2Fnews%2Flocal%2Fhudson-hub_main&sz=2x3&cust_params=cst_section%3Dnews%26cst_subsection%3Dlocal%26cst_topic%3Dhudson-hub_main%26pageType%3Dsubsection-front%26property%3DNABJ%26sitepage%3DNABJ%2Fnews%2Flocal%2Fcommunities%2Fhudson-hub%26ssts_section%3Dnews%26ssts_subsection%3Dlocal%26ssts_topic%3Dcommunities%26ssts_subtopic%3Dhudson-hub\"
-        data-t-l=\":list|o|c|branded content tile\" data-x-u=/7103/oh-akron-C6682/native-front_tile/news/local/hudson-hub_main
-        data-x-sx=native-front_tile data-x-bc=%3Cimg%20class%3D%22gnt_m_flm_i%22%20src%3D%22%7Bis%7D%22%20alt%20decoding%3D%22async%22%20loading%3D%22lazy%22%20crossorigin%3E%7Bti%7D%3Cdiv%20class%3D%22gnt_m_flm_sbt%20gnt_sbt%20gnt_sbt__ms%22%20data-c-ms%3D%22%7Blb%7D%22%3E%3C%2Fdiv%3E
-        data-x-sm=cPlrSetup data-x-em=egFb data-g-r=base_nft data-x-btb></a> <a href=/story/news/local/communities/hudson-hub/2023/07/24/hudson-resident-wins-7-gold-medals-for-swimming-at-national-event/70456123007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|8 data-c-br=\"Hudson\u2019s Larry Terkel
+        href=/story/news/local/communities/hudson-hub/2023/07/24/hudson-resident-wins-7-gold-medals-for-swimming-at-national-event/70456123007/
+        class=gnt_m_flm_a data-t-l=:list|o|c|9 data-c-br=\"Hudson\u2019s Larry Terkel
         recently competed at the National Senior Games in Pennsylvania. He took home
         seven gold medals.\"><img class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/presto/2021/01/26/NETN/2eb8383f-e835-410a-91b4-bace8e15d85f-Swimming_lane_line.jpg?crop=1871,1871,x280,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/presto/2021/01/26/NETN/2eb8383f-e835-410a-91b4-bace8e15d85f-Swimming_lane_line.jpg?crop=1871,1871,x280,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Hudson resident wins 7 gold medals swimming
         at National Senior Games<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=\"HUDSON
         HUB TIMES\"></div></a><a href=/picture-gallery/news/local/2023/07/24/photo-gallery-northeast-ohio-rocked-by-flooding-july-2003-20-years-ago-hudson-timber-top/70455952007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|9 data-c-br=\"Rainstorms that swept through
-        Northeast Ohio left a trail of serious damage across the Akron area.\"><img
+        class=gnt_m_flm_a data-t-l=:list|o|c|10 data-c-br=\"Rainstorms that swept
+        through Northeast Ohio left a trail of serious damage across the Akron area.\"><img
         class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/authoring/authoring-images/2023/07/24/NABJ/70455688007-0307240262.JPG?crop=1196,1195,x191,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/authoring/authoring-images/2023/07/24/NABJ/70455688007-0307240262.JPG?crop=1196,1195,x191,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/><svg class=gnt_m_flm_svg><use xlink:href=#gnt_svg_camera
         /></svg>Photos: Remembering the flood of July 2003<div class=\"gnt_m_flm_sbt
         gnt_sbt gnt_sbt__ms\" data-c-ms=LOCAL></div></a><a href=/story/news/2023/07/22/storms-in-2003-flooded-summit-stark-killing-two-in-hudson-garage/70446944007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|10 data-c-br=\"Two waves of thunderstorms
+        class=gnt_m_flm_a data-t-l=:list|o|c|11 data-c-br=\"Two waves of thunderstorms
         hit Northeast Ohio in July 2003, causing more than $188 million in damage
         and killing 5, including 2 in a Hudson garage\"><img class=gnt_m_flm_i data-g-r=lazy_c
         data-gl-src=\"/gcdn/authoring/authoring-images/2023/07/24/NABJ/70455692007-0307240283.JPG?crop=899,900,x0,y236&width=120&height=120&format=pjpg&auto=webp\"
@@ -409,14 +417,14 @@ interactions:
         2x\" decoding=async alt=\"\"/> Floods ravaged Summit, surrounding counties
         in 2003, killing 5<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=NEWS></div></a><a
         href=/story/news/2023/07/21/jason-aldean-concert-summit-deputy-hit-by-truck-hospitalized-for-life-threatening-injuries/70442915007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|11 data-c-br=\"The deputy who was directing
+        class=gnt_m_flm_a data-t-l=:list|o|c|12 data-c-br=\"The deputy who was directing
         traffic for the Jason Aldean concert was hit by a trailer being pulled by
         a pickup truck.\"><img class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/presto/2023/04/26/NABJ/f0fff7d4-00bf-4d9c-96af-0e991e54a12d-STOCK_OH_ABJ_summit_county_.JPG?crop=462,462,x112,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/presto/2023/04/26/NABJ/f0fff7d4-00bf-4d9c-96af-0e991e54a12d-STOCK_OH_ABJ_summit_county_.JPG?crop=462,462,x112,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Summit deputy hit by trailer near Blossom has
         life-threatening injuries<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\"
         data-c-ms=NEWS></div></a><a href=/story/opinion/editorials/2023/07/19/ohio-issue-1-vote-no-august-special-election-constitution-amendment/70406231007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|12 data-c-br=\"Trust in government would
+        class=gnt_m_flm_a data-t-l=:list|o|c|13 data-c-br=\"Trust in government would
         visibly erode if 59% of voters supported an issue and lost. It's undemocratic
         and discourages citizen participation.\"><img class=gnt_m_flm_i data-g-r=lazy_c
         data-gl-src=\"/gcdn/presto/2023/07/12/NCOD/40bd9511-8803-4eab-aaea-c6d45a4d8f38-Stahler_stateofOhioissue1_.jpg?crop=3600,3600,x480,y0&width=120&height=120&format=pjpg&auto=webp\"
@@ -424,28 +432,28 @@ interactions:
         2x\" decoding=async alt=\"\"/> Editorial: 8 reasons for why Issue 1 is wrong
         for all Ohioans<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms gnt_sbt__op\"
         data-c-ms=EDITORIALS>Akron Beacon Journal Editorial Board\_</div></a><a href=/story/news/local/2023/07/18/hudsons-annual-sidewalk-sale-returns-this-week/70423951007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|13 data-c-br=\"Many Hudson shops are
+        class=gnt_m_flm_a data-t-l=:list|o|c|14 data-c-br=\"Many Hudson shops are
         moving their wares outside July 20-23 for the annual Sidewalk Sale.\"><img
         class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/presto/2023/07/18/NABJ/9c1edaeb-942c-47c9-b07b-a8ee9e3b98c5-sidewalk_sale.jpg?crop=1499,1499,x0,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/presto/2023/07/18/NABJ/9c1edaeb-942c-47c9-b07b-a8ee9e3b98c5-sidewalk_sale.jpg?crop=1499,1499,x0,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Hudson's annual Sidewalk Sale returns this
         week<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=LOCAL></div></a><a
         href=/story/news/local/communities/hudson-hub/2023/07/15/where-in-hudson-relates-the-history-of-wildlife-woods/70417169007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|14 data-c-br=\"Longtime Hudson resident
+        class=gnt_m_flm_a data-t-l=:list|o|c|15 data-c-br=\"Longtime Hudson resident
         relates the history of Wildlife Woods, in a column first printed in the Hudson
         Hub-Times in 2016\"><img class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/presto/2023/07/15/NABJ/06aa12b7-bc51-4278-9355-ec815204372a-Liz_Murphy.jpg?crop=2268,2268,x378,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/presto/2023/07/15/NABJ/06aa12b7-bc51-4278-9355-ec815204372a-Liz_Murphy.jpg?crop=2268,2268,x378,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Where in Hudson: Wildlife Woods spurred park
         board creation<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=\"HUDSON
         HUB TIMES\"></div></a><a href=/story/news/local/2023/07/15/the-grey-colt-womens-clothing-boutique-leaving-hudson-for-philadelphia/70398568007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|15 data-c-br=\"The Grey Colt, a women's
+        class=gnt_m_flm_a data-t-l=:list|o|c|16 data-c-br=\"The Grey Colt, a women's
         boutique in Hudson, is moving to Philadelphia after more than 60 years in
         the city.\"><img class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/presto/2023/07/12/NABJ/6bb4b19c-0dfa-4fbd-931d-3fa4dc07499e-grey_colt_closing_1.jpg?crop=1341,1341,x658,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/presto/2023/07/12/NABJ/6bb4b19c-0dfa-4fbd-931d-3fa4dc07499e-grey_colt_closing_1.jpg?crop=1341,1341,x658,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Longtime Hudson shop The Grey Colt leaving
         city for Philadelphia<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=LOCAL></div></a><a
         href=/story/news/crime/2023/07/12/former-doctor-mahmud-kara-indicted-2-counts-alleged-sexual-assault-hudson/70406514007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|16 data-c-br=\"A Summit County grand
+        class=gnt_m_flm_a data-t-l=:list|o|c|17 data-c-br=\"A Summit County grand
         jury indicted Mahmud Kara, 57, on two sex offense charges for sexually assaulting
         a woman at his Hudson home in April.\"><img class=gnt_m_flm_i data-g-r=lazy_c
         data-gl-src=\"/gcdn/presto/2020/09/25/NABJ/b92a3997-0ae4-4977-a229-5008265e3d55-gavel.JPG?crop=416,416,x55,y0&width=120&height=120&format=pjpg&auto=webp\"
@@ -453,14 +461,14 @@ interactions:
         2x\" decoding=async alt=\"\"/> Hudson man indicted for alleged sexual assault
         of woman in April<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=CRIME></div></a><a
         href=/story/news/local/2023/07/12/orphaned-by-rwandan-genocide-kent-state-doctoral-student-pacifique-niyonzima-works-for-peace/70328981007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|17 data-c-br=\"Pacifique Niyonzima was
+        class=gnt_m_flm_a data-t-l=:list|o|c|18 data-c-br=\"Pacifique Niyonzima was
         orphaned by the Rwandan genocide. Now he works to educate others about peace.\"><img
         class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/presto/2023/07/07/NABJ/b6ee97ad-b944-4ad6-ae29-83d93f73e408-Family_Downtown_Kigali_Rwanda_May2023.JPG?crop=1536,1536,x256,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/presto/2023/07/07/NABJ/b6ee97ad-b944-4ad6-ae29-83d93f73e408-Family_Downtown_Kigali_Rwanda_May2023.JPG?crop=1536,1536,x256,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> From Rwanda to Hudson and back: A young man's
         journey to educate world<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=LOCAL></div></a><a
         href=/story/news/local/2023/07/07/which-summit-county-communities-will-get-hit-hardest-with-property-value-tax-increases/70390771007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|18 data-c-br=\"Summit County property
+        class=gnt_m_flm_a data-t-l=:list|o|c|19 data-c-br=\"Summit County property
         values are increasing 40% or more in some communities as part of the reappraisal
         process that happens every three years.\"><img class=gnt_m_flm_i data-g-r=lazy_c
         data-gl-src=\"/gcdn/presto/2020/08/07/NSHT/c6471ea4-6904-4e30-9ef4-a02d8e2891c0-iStock-92099682.jpg?crop=2298,2298,x345,y0&width=120&height=120&format=pjpg&auto=webp\"
@@ -468,7 +476,7 @@ interactions:
         2x\" decoding=async alt=\"\"/> These Summit communities will see biggest property
         value increases<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms gnt_sbt__ts\"
         data-c-ms=LOCAL data-c-dt=\"10:35 a.m. ET Aug. 3\"></div></a><a href=/picture-gallery/news/2023/07/04/photos-64th-annual-stow-july-4th-parade/12207348002/
-        class=gnt_m_flm_a data-t-l=:list|o|c|19 data-c-br=\"Thousands turned out Tuesday
+        class=gnt_m_flm_a data-t-l=:list|o|c|20 data-c-br=\"Thousands turned out Tuesday
         to see nearly 100 groups march and &#34;show Stow spirit,&#34; the theme of
         this year's Fourth of July parade.\"><img class=gnt_m_flm_i data-g-r=lazy_c
         data-gl-src=\"/gcdn/presto/2023/07/04/NABJ/33f92f07-1271-4143-81b8-c2b9f1c0ba9a-feat_stow_parade_1.jpg?crop=3648,3648,x268,y0&width=120&height=120&format=pjpg&auto=webp\"
@@ -476,7 +484,7 @@ interactions:
         2x\" decoding=async alt=\"\"/><svg class=gnt_m_flm_svg><use xlink:href=#gnt_svg_camera
         /></svg>PHOTOS: 64th annual Stow July 4th Parade<div class=\"gnt_m_flm_sbt
         gnt_sbt gnt_sbt__ms\" data-c-ms=NEWS></div></a><a href=/story/news/local/communities/hudson-hub/2023/06/30/hudson-high-schools-chamber-choir-performed-several-scheduled-concerts-in-ireland/70374170007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|20 data-c-br=\"Hudson High School's Chamber
+        class=gnt_m_flm_a data-t-l=:list|o|c|21 data-c-br=\"Hudson High School's Chamber
         Choir had the opportunity to perform several concerts in Ireland, as well
         as enjoy the sights of the Emerald Isle\"><img class=gnt_m_flm_i data-g-r=lazy_c
         data-gl-src=\"/gcdn/presto/2023/06/30/NABJ/d2563e84-b16c-4b7a-aa50-c1671a1772f5-HHS_Choir_1.png?crop=1439,1439,x0,y0&width=120&height=120&format=pjpg&auto=webp\"
@@ -484,7 +492,7 @@ interactions:
         2x\" decoding=async alt=\"\"/> Hudson High School Chamber Choir travels to
         Ireland to perform<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=\"HUDSON
         HUB TIMES\"></div></a><a href=/story/news/2023/06/28/who-is-matt-kaulig-and-kaulig-companies-sponsor-at-firestone-pga-tour-champions/70355895007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|21 data-c-br=\"The PGA Tour Champions'
+        class=gnt_m_flm_a data-t-l=:list|o|c|22 data-c-br=\"The PGA Tour Champions'
         Senior Players Championship at the Firestone Country Club is July 13 to 16.
         Here's what to know about the key sponsor.\"><img class=gnt_m_flm_i data-g-r=lazy_c
         data-gl-src=\"/gcdn/presto/2022/06/15/NABJ/4dcbcdcc-a97a-4b8f-948b-cfcd99785562-Matt_Kaulig_at_presser.jpg?crop=2160,2160,x960,y0&width=120&height=120&format=pjpg&auto=webp\"
@@ -492,37 +500,29 @@ interactions:
         2x\" decoding=async alt=\"\"/> Who is the Kaulig Companies, sponsor of the
         PGA Tour stop in Akron?<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=NEWS></div></a><a
         href=/story/news/local/communities/hudson-hub/2023/06/26/corvi-fund-set-up-to-assist-families-grieving-from-infant-loss/70357835007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|22 data-c-br=\"The Charles Martin Corvi
+        class=gnt_m_flm_a data-t-l=:list|o|c|23 data-c-br=\"The Charles Martin Corvi
         Fund was set up by a Hudson couple to help families coping with pregnancy
         and infant loss\"><img class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/presto/2023/06/26/NABJ/b5293f75-2424-4892-bee6-37b75b2d6c5f-Corvi_Fund.jpg?crop=313,313,x17,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/presto/2023/06/26/NABJ/b5293f75-2424-4892-bee6-37b75b2d6c5f-Corvi_Fund.jpg?crop=313,313,x17,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Hudson couple works to help families grieving
         from infant loss<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=\"HUDSON
         HUB TIMES\"></div></a><a href=/story/news/local/communities/hudson-hub/2023/06/26/case-barlow-farm-open-house-will-feature-music-art-in-barn/70356117007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|23 data-c-br=\"Area musicians, art from
+        class=gnt_m_flm_a data-t-l=:list|o|c|24 data-c-br=\"Area musicians, art from
         Hudson Society of Artists, will highlight the annual open house at Case-Barlow
         Farm\"><img class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/presto/2023/06/26/NABJ/f8cba0e0-0a21-4dc6-81ee-edf0f6479ea5-Western_Reserve_Community_Band.jpg?crop=483,483,x192,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/presto/2023/06/26/NABJ/f8cba0e0-0a21-4dc6-81ee-edf0f6479ea5-Western_Reserve_Community_Band.jpg?crop=483,483,x192,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Music, art highlights of upcoming Case-Barlow
         Farm open house<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=\"HUDSON
         HUB TIMES\"></div></a><a href=/story/news/local/communities/hudson-hub/2023/06/26/the-rotary-club-of-hudson-marked-several-highlights-including-gala/70345627007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|24 data-c-br=\"Scholarships, new members
+        class=gnt_m_flm_a data-t-l=:list|o|c|25 data-c-br=\"Scholarships, new members
         and the 37th annual gala were highlights for the Rotary Club of Hudson this
         past year.\"><img class=gnt_m_flm_i data-g-r=lazy_c data-gl-src=\"/gcdn/presto/2023/06/22/NABJ/dd950b22-93dd-4078-b01e-7f59b9cfd448-IMG_3555.jpg?crop=3024,3024,x504,y0&width=120&height=120&format=pjpg&auto=webp\"
         data-gl-srcset=\"/gcdn/presto/2023/06/22/NABJ/dd950b22-93dd-4078-b01e-7f59b9cfd448-IMG_3555.jpg?crop=3024,3024,x504,y0&width=240&height=240&format=pjpg&auto=webp
         2x\" decoding=async alt=\"\"/> Gala, scholarships part of Rotary Club of Hudson's
         highlights<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=\"HUDSON
-        HUB TIMES\"></div></a><a href=/story/sports/high-school/golf/2023/06/23/isabella-goyette-wins-hudson-junior-invitational-golf-medina-highland-high-school-davis-gochenouer/70339398007/
-        class=gnt_m_flm_a data-t-l=:list|o|c|25 data-c-br=\"Highland's Isabella Goyette
-        became the second Hornet to win the Hudson Junior Invitational Thursday. Dayton's
-        Davis Gochenouer won the boys title.\"><img class=gnt_m_flm_i data-g-r=lazy_c
-        data-gl-src=\"/gcdn/presto/2023/06/21/NABJ/63cad423-e750-460b-ae1c-607b71a1752d-Hudson_Invitational_9.jpg?crop=2344,2344,x0,y0&width=120&height=120&format=pjpg&auto=webp\"
-        data-gl-srcset=\"/gcdn/presto/2023/06/21/NABJ/63cad423-e750-460b-ae1c-607b71a1752d-Hudson_Invitational_9.jpg?crop=2344,2344,x0,y0&width=240&height=240&format=pjpg&auto=webp
-        2x\" decoding=async alt=\"\"/> Highland's Goyette becomes second Hornet to
-        win Hudson Junior<div class=\"gnt_m_flm_sbt gnt_sbt gnt_sbt__ms\" data-c-ms=GOLF></div></a></div><div
-        class=\"gnt_tb gnt_tbb\"><div id=gnt_tbw_1></div></div></div><div class=gnt_rr><div
-        class=gnt_rr_xpst><aside aria-label=advertisement class=\"gnt_m gnt_x gnt_x__lbl
-        gnt_x__pf\"><div id=ad-slot-7103-oh-akron-C6682-poster_front-news-local-hudson-hub_main-1
+        HUB TIMES\"></div></a></div><div class=\"gnt_tb gnt_tbb\"><div id=gnt_tbw_1></div></div></div><div
+        class=gnt_rr><div class=gnt_rr_xpst><aside aria-label=advertisement class=\"gnt_m
+        gnt_x gnt_x__lbl gnt_x__pf\"><div id=ad-slot-7103-oh-akron-C6682-poster_front-news-local-hudson-hub_main-1
         class=\"gnt_x_sl gnt_x_p\"></div></aside></div><div class=gnt_rr_xst><aside
         aria-label=advertisement class=\"gnt_m gnt_x gnt_x__lbl gnt_x__st\"><div data-g-r=lazy
         data-gl-method=lazyLoadX id=~ad-slot-7103-oh-akron-C6682-poster_scroll_front-news-local-hudson-hub_main-3
@@ -598,7 +598,7 @@ interactions:
         f.passive&&(f.passive=!0)}d(e,c,f)})}g$.as=(d,e,c,f,k,m)=>{const q=document.createElement(\"script\");q.src=d;e&&(q.async=!0);k&&(q.crossOrigin=\"use-credentials\"===k?k:!0);c&&(q.onload=c);f&&(q.onerror=f);m&&m(q);document.head.appendChild(q)};\ng$.btau=d=>btoa(d).replace(/=/g,\"\").replace(/\\+/g,\"-\").replace(/\\//g,\"_\");;gnt.data={\"adAamProps\":\"tangent-desktop|desktop|section
         front\",\"adBuild\":\"tangent-desktop\",\"adPageType\":\"subsection-front\",\"adTopic\":\"\",\"baseName\":\"beaconjournal\",\"canonicalURL\":\"https://www.beaconjournal.com/communities/hudsonhubtimes/\",\"clenv\":\"production\",\"contentCategory\":\"\",\"contentCst\":\"news:local:hudson-hub_main\",\"contentName\":\"/communities/hudsonhubtimes/\",\"contentSstsSection\":\"news\",\"contentSstsSubsection\":\"news:local\",\"contentSstsSubtopic\":\"news:local:communities:hudson-hub\",\"contentSstsTopic\":\"news:local:communities\",\"contentType\":\"sub-section
         front\",\"cstCategory\":\"news\",\"cstSubcategory\":\"local\",\"cstTopic\":\"hudson-hub_main\",\"customerServicePhoneNumber\":\"1-800-777-2442\",\"fbappid\":\"761510428008270\",\"isRequestFromFastly\":true,\"legacyCompany\":\"Gatehouse\",\"pageBrandlock\":\"no\",\"pageExperienceType\":\"desktop\",\"pageHasVideo\":\"no\",\"publicationDomain\":\"beaconjournal.com\",\"publicationName\":\"Akron
-        Beacon Journal\",\"sectionName\":\"news\",\"serverTimestamp\":1691078469659,\"siteCode\":\"NABJ\",\"siteId\":\"6168\",\"sstsPath\":\"news/local/communities/hudson-hub\",\"subSectionName\":\"local\",\"subTopicName\":\"hudson-hub\",\"topicName\":\"communities\",\"taboolaPageType\":\"category\",\"taboolaPublisherId\":\"gannett-network\",\"twitterAccount\":\"beaconjournal\",\"v\":\"0.3842.0\"};g$.nv.userAgent.includes(\"GannettNativeWebView\")&&(gnt.data.adBuild=\"native-tangent\");;(function(){function
+        Beacon Journal\",\"sectionName\":\"news\",\"serverTimestamp\":1691181626395,\"siteCode\":\"NABJ\",\"siteId\":\"6168\",\"sstsPath\":\"news/local/communities/hudson-hub\",\"subSectionName\":\"local\",\"subTopicName\":\"hudson-hub\",\"topicName\":\"communities\",\"taboolaPageType\":\"category\",\"taboolaPublisherId\":\"gannett-network\",\"twitterAccount\":\"beaconjournal\",\"v\":\"0.3842.0\"};g$.nv.userAgent.includes(\"GannettNativeWebView\")&&(gnt.data.adBuild=\"native-tangent\");;(function(){function
         d(){K=new Promise((z,t)=>{v=z;Y=t});K.catch(z=>{k(z,\"h3h3\")})}const {storage:e,u:c}=gnt,f=g$,{cc:k,ls:m,jp:q,js:G}=f,y=c.localUserJson=e&&m.getItem(\"gupUserInfo\"),u=e&&m.getItem(\"user_insights\");let
         x,C,K,v,Y,A,M,N;if(y)try{(c.localUser=c.user=q(y)).local=!0}catch(z){k(z,\"h3h1\",y)}if(u)try{N=q(u)}catch(z){k(z,\"h3h2\",u)}N||(N={});N.local=!0;c.insights=N;c.getUser=function(){M||(A||(A=setTimeout(()=>{C=!0;c.dr||(c.dr=2);x=A=0;Y(Error(\"GUP
         timeout\"));\nd();k(\"Timed out waiting for GUP response\",\"h3h4\")},3E3)),x&&!C)||(d(),C&&(c.ip=0),C=!1,x=(c.ip||c.ld()).then(z=>{if(!z.ok){c.dr||(c.dr=5);const
@@ -823,7 +823,7 @@ interactions:
       Accept-Ranges:
       - bytes
       Age:
-      - '34'
+      - '577'
       Cache-Control:
       - no-store
       Connection:
@@ -841,7 +841,7 @@ interactions:
       Cross-Origin-Resource-Policy:
       - same-origin
       Date:
-      - Thu, 03 Aug 2023 16:01:43 GMT
+      - Fri, 04 Aug 2023 20:50:02 GMT
       Feature-Policy:
       - camera 'none';display-capture 'none';geolocation 'none';microphone 'none';payment
         'none';usb 'none';xr-spatial-tracking 'none'
@@ -856,7 +856,7 @@ interactions:
       Report-to:
       - '{"max_age":31557600,"include_subdomains":true,"endpoints":[{"url":"https://reporting-api.gannettinnovation.com"}]}'
       Server-Timing:
-      - gnt_i;desc="48451744394961302408*7029*US~OH~geneva~44041"
+      - gnt_i;desc="33834257818276316811*7029*US~OH~geneva~44041"
       Strict-Transport-Security:
       - max-age=63072000;includeSubDomains;preload
       X-Cache:
@@ -866,13 +866,13 @@ interactions:
       X-Frame-Options:
       - deny
       X-Timer:
-      - S1691078504.907846,VS0,VE2
+      - S1691182203.980268,VS0,VE5
       X-XSS-Protection:
       - 1; mode=block
       content-length:
-      - '127852'
+      - '127725'
       etag:
-      - W/"22623-uznlKvC+s5qz2+MOCb/RM/N7WHs"
+      - W/"22598-nAbLF4z0smsUGoiszWRpxnrfFho"
       vary:
       - Accept-Encoding,User-Agent
     status:
@@ -909,7 +909,7 @@ interactions:
       Connection:
       - close
       Date:
-      - Thu, 03 Aug 2023 16:01:44 GMT
+      - Fri, 04 Aug 2023 20:50:03 GMT
       NEL:
       - '{"report_to": "w3-reporting-nel", "max_age": 14400, "include_subdomains":
         false, "success_fraction": 1.0, "failure_fraction": 1.0}'
@@ -996,14 +996,14 @@ interactions:
         true, "new_modmail_exists": false, "pref_autoplay": true, "coins": 0, "has_paypal_subscription":
         false, "has_subscribed_to_premium": false, "id": "houtpdl0", "has_stripe_subscription":
         false, "oauth_client_id": "Hwz5_lIHWbE7ycQyy549kA", "can_create_subreddit":
-        true, "over_18": false, "is_gold": false, "is_mod": true, "awarder_karma":
+        true, "over_18": true, "is_gold": false, "is_mod": true, "awarder_karma":
         0, "suspension_expiration_utc": null, "has_verified_email": true, "is_suspended":
         false, "pref_video_autoplay": true, "in_chat": true, "has_android_subscription":
         false, "in_redesign_beta": true, "icon_img": "https://styles.redditmedia.com/t5_5iglf0/styles/profileIcon_snoo9023461f-e11d-4e5f-9da2-12ece0717c7f-headshot.png?width=256&height=256&crop=256:256,smart&s=a909ca1f5e636bab2a8017b43038261de112d3fa",
-        "has_mod_mail": false, "pref_nightmode": true, "awardee_karma": 0, "hide_from_robots":
-        true, "password_set": true, "link_karma": 391, "force_password_reset": false,
-        "total_karma": 391, "seen_give_award_tooltip": false, "inbox_count": 8, "seen_premium_adblock_modal":
-        false, "pref_top_karma_subreddits": true, "has_mail": true, "pref_show_snoovatar":
+        "has_mod_mail": false, "pref_nightmode": false, "awardee_karma": 0, "hide_from_robots":
+        true, "password_set": true, "link_karma": 392, "force_password_reset": false,
+        "total_karma": 392, "seen_give_award_tooltip": false, "inbox_count": 0, "seen_premium_adblock_modal":
+        false, "pref_top_karma_subreddits": true, "has_mail": false, "pref_show_snoovatar":
         false, "name": "hubs-bot", "pref_clickgadget": 5, "created": 1639835545.0,
         "gold_creddits": 0, "created_utc": 1639835545.0, "has_ios_subscription": false,
         "pref_show_twitter": false, "in_beta": false, "comment_karma": 0, "accept_followers":
@@ -1015,7 +1015,7 @@ interactions:
       Connection:
       - keep-alive
       Date:
-      - Thu, 03 Aug 2023 16:01:44 GMT
+      - Fri, 04 Aug 2023 20:50:03 GMT
       NEL:
       - '{"report_to": "w3-reporting-nel", "max_age": 14400, "include_subdomains":
         false, "success_fraction": 1.0, "failure_fraction": 1.0}'
@@ -1043,7 +1043,7 @@ interactions:
       cache-control:
       - private, s-maxage=0, max-age=0, must-revalidate, no-store
       content-length:
-      - '4429'
+      - '4430'
       content-type:
       - application/json; charset=UTF-8
       expires:
@@ -1051,11 +1051,11 @@ interactions:
       x-moose:
       - majestic
       x-ratelimit-remaining:
-      - '994'
+      - '995'
       x-ratelimit-reset:
-      - '496'
+      - '597'
       x-ratelimit-used:
-      - '2'
+      - '1'
       x-robots-tag:
       - noindex, nofollow
     status:
