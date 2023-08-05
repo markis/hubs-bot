@@ -48,7 +48,7 @@ def get_mock_hub_times_bot() -> tuple[HubTimesBot, Mock, Mock]:
         spec=Completion, create=Mock(return_value=Mock(choices=[Mock(text="test")]))
     )
     mock_context = Mock(spec=Context, reddit=mock_reddit, openai_completion=mock_openai_completion)
-    mock_config = Mock(spec=Config, base_url="http://test.com", news_tags={"LOCAL"})
+    mock_config = Mock(spec=Config, base_url="http://test.com", news_tags=("LOCAL",))
     mock_submission = Mock(
         spec=Submission,
         title="Test post",
