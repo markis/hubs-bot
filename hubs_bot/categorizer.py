@@ -1,8 +1,7 @@
 import logging
-from textwrap import dedent
 from typing import TYPE_CHECKING, Any, NotRequired, TypedDict, TypeGuard
 
-import openai
+from openai import OpenAI
 from praw.reddit import Submission
 
 from hubs_bot.config import Config
@@ -10,7 +9,7 @@ from hubs_bot.context import Context
 
 logger = logging.getLogger(__name__)
 
-if TYPE_CHECKING:  # pragma: no cover
+if TYPE_CHECKING:
     from praw.models.reddit.submission import SubmissionFlair
 
 
@@ -28,11 +27,11 @@ def is_flair(value: Any) -> TypeGuard[Flair]:
 
 class Categorizer:
     config: Config
-    openai_completion: openai.Completion
+    openai: OpenAI
 
     def __init__(self, context: Context, config: Config) -> None:
         self.config = config
-        self.openai_completion = context.openai_completion
+        self.openai = context.openai
 
     def flair_submission(self, submission: Submission) -> None:
         """
@@ -40,7 +39,7 @@ class Categorizer:
         """
         flair: SubmissionFlair = submission.flair
         choices = {
-            choice["flair_text"]: choice["flair_template_id"]
+            choice["flair_text"].lower(): choice["flair_template_id"]
             for choice in flair.choices()
             if is_flair(choice)
         }
@@ -50,24 +49,17 @@ class Categorizer:
 
     def _ask_openai(self, content_text: str, choices: dict[str, str]) -> str:
         result = self.config.subreddit_flair
-        prompt = dedent(
-            f"""
-            Using only one of the following categories:
-            {", ".join(choices.keys())}
-
-            How would you categorize the following news article:
-
-            {content_text}
-            """
+        prompt = (
+            "Using one of the following categories ("
+            + ", ".join(choices.keys())
+            + "), categorize this article and respond with just the category:"
+            + content_text
+        )
+        resp = self.openai.completions.create(
+            model="gpt-3.5-turbo-instruct", prompt=prompt, max_tokens=10, temperature=0
         )
 
-        resp: Any = self.openai_completion.create(  # type: ignore[no-untyped-call]
-            model="gpt-3.5-turbo",
-            prompt=prompt,
-        )
-
-        if resp and len(resp.choices) > 0:
-            text: str = resp.choices[0].text
-            result = choices.get(text.strip(), result)
+        if resp and resp.choices and len(resp.choices) > 0 and (text := resp.choices[0].text):
+            result = choices.get(text.strip().lower(), result)
 
         return result

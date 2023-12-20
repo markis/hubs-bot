@@ -1,7 +1,9 @@
-from unittest.mock import ANY, Mock
+from collections.abc import Mapping, MutableMapping, MutableSequence, Sequence
+from unittest.mock import ANY, Mock, patch
 
+import httpx
 import pytest
-from openai import Completion
+from openai.types import Completion, CompletionChoice, CompletionUsage
 from praw import Reddit
 from praw.models.reddit.redditor import Redditor
 from praw.models.reddit.submission import SubmissionFlair
@@ -22,7 +24,21 @@ def hub_times_bot() -> HubTimesBot:
 @pytest.mark.integration()
 @pytest.mark.vcr()
 def test_bot_run(hub_times_bot: HubTimesBot) -> None:
-    hub_times_bot.run()
+    SKIP_KEYS = {"Content-Encoding"}
+
+    def _transform_headers(httpx_response: httpx.Response) -> Mapping[str, Sequence[str]]:
+        """vcrpy's httpx stub doesn't handle gzip very well, this will remove the gzip encoding"""
+        out: MutableMapping[str, MutableSequence[str]] = {}
+        for key, var in httpx_response.headers.raw:
+            decoded_key = key.decode("utf-8")
+            if decoded_key not in SKIP_KEYS:
+                out.setdefault(decoded_key, [])
+                out[decoded_key].append(var.decode("utf-8"))
+
+        return out
+
+    with patch("vcr.stubs.httpx_stubs._transform_headers", _transform_headers):
+        hub_times_bot.run()
 
 
 @pytest.mark.integration()
@@ -44,10 +60,17 @@ def get_mock_hub_times_bot() -> tuple[HubTimesBot, Mock, Mock]:
     mock_sr.new.return_value = []
     mock_me = mock_reddit.user.me()
     mock_me.new.return_value = []
-    mock_openai_completion = Mock(
-        spec=Completion, create=Mock(return_value=Mock(choices=[Mock(text="test")]))
+    mock_openai = Mock()
+    mock_openai.completions.create.return_value = Completion(
+        id="cmpl-123abc",
+        choices=[CompletionChoice(finish_reason="stop", index=0, logprobs=None, text="Test")],
+        created=123456,
+        model="gpt-model",
+        object="text_completion",
+        system_fingerprint=None,
+        usage=CompletionUsage(completion_tokens=2, prompt_tokens=73, total_tokens=75),
     )
-    mock_context = Mock(spec=Context, reddit=mock_reddit, openai_completion=mock_openai_completion)
+    mock_context = Mock(spec=Context, reddit=mock_reddit, openai=mock_openai)
     mock_config = Mock(spec=Config, base_url="http://test.com", news_tags=("LOCAL",))
     mock_submission = Mock(
         spec=Submission,

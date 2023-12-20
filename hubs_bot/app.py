@@ -16,7 +16,7 @@ from hubs_bot.context import Context
 logger = logging.getLogger(__name__)
 
 
-if TYPE_CHECKING:  # pragma: no cover
+if TYPE_CHECKING:
     from praw.reddit import Submission, Subreddit
 
 

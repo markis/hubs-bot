@@ -1741,4 +1741,104 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: '{"model": "gpt-3.5-turbo-instruct", "prompt": "Using one of the following
+      categories (politics, coronavirus, crime, opinion, news, question, phase ii,
+      sports, event, announcement, psa, people, government, business, community, technology,
+      memory), categorize this article and respond with just the category:Abortion
+      opponent State Sen. Kristina Roegner to become foster parent", "max_tokens":
+      10, "temperature": 0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      authorization:
+      - <AUTHORIZATION>
+      connection:
+      - keep-alive
+      content-length:
+      - '413'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.5.0
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.5.0
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.11.6
+    method: POST
+    uri: https://api.openai.com/v1/completions
+  response:
+    content: "{\n  \"id\": \"cmpl-8XbDlmfAx90OVAQvZ6TufMNW15qT6\",\n  \"object\":
+      \"text_completion\",\n  \"created\": 1703018593,\n  \"model\": \"gpt-3.5-turbo-instruct\",\n
+      \ \"choices\": [\n    {\n      \"text\": \"\\n\\nPeople\",\n      \"index\":
+      0,\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n
+      \ \"usage\": {\n    \"prompt_tokens\": 70,\n    \"completion_tokens\": 2,\n
+      \   \"total_tokens\": 72\n  }\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 83827a00cbbb81ac-IAD
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 Dec 2023 20:43:13 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-instruct
+      openai-organization:
+      - user-j7mpqhkteqvygtlal54u8pdc
+      openai-processing-ms:
+      - '55'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '3000'
+      x-ratelimit-limit-tokens:
+      - '250000'
+      x-ratelimit-limit-tokens_usage_based:
+      - '250000'
+      x-ratelimit-remaining-requests:
+      - '2999'
+      x-ratelimit-remaining-tokens:
+      - '249990'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '249990'
+      x-ratelimit-reset-requests:
+      - 20ms
+      x-ratelimit-reset-tokens:
+      - 2ms
+      x-ratelimit-reset-tokens_usage_based:
+      - 2ms
+      x-request-id:
+      - 8858380ba6c6bab3701efd37ce9ade82
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

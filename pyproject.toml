@@ -1,36 +1,72 @@
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry]
+[project]
 name = "hubs_bot"
 version = "1.0.0"
-authors = ["Markis Taylor <m@rkis.net>"]
+authors = [{name = "Markis Taylor", email = "m@rkis.net"}]
 description = "Hudson news bot for r/HudsonOH"
+requires-python = ">= 3.11"
+dependencies = [
+  "requests>=2.28.2,<3",
+  "beautifulsoup4>=4.11.2,<5",
+  "praw>=7.7.1,<8",
+  "openai>=1.5.0,<2",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-requests = "^2.28.2"
-beautifulsoup4 = "^4.11.2"
-praw = "^7.7.1"
-openai = "^0.27.8"
+[project.optional-dependencies]
+build = [
+  "mypy>=1.4.1,<2",
+  "types-requests>=2.28.11.15",
+]
+dev = [
+  "hubs_bot[build]",
+  "black>=23.1.0,<24",
+  "ruff>=0.1.0,<1",
+]
+test = [
+  "coverage[toml]>=7.2.1,<8",
+  "hypothesis>=6.82.0,<7",
+  "pytest>=7.2.2,<8",
+  "pytest-cov>=4.1.0,<5",
+  "pytest-recording>=0.13.0,<1",
+]
 
-[tool.poetry.group.dev.dependencies]
-black = "^23.1.0"
-mypy = "^1.4.1"
-ruff = "^0.0.282"
-types-requests = "^2.28.11.15"
+[project.scripts]
+run_hubs_bot = "hubs_bot.__main__:run"
 
-[tool.poetry.group.test.dependencies]
-coverage = {extras = ["toml"], version = "^7.2.1"}
-hypothesis = "^6.82.0"
-pytest = "^7.2.2"
-pytest-cov = "^4.1.0"
-pytest-recording = "^0.13.0"
+[tool.hatch.build.targets.wheel.hooks.mypyc]
+enable-by-default = false  # enable with HATCH_BUILD_HOOK_ENABLE_MYPYC=1
+dependencies = [ "hatch-mypyc==0.16.0" ]
+require-runtime-dependencies = true
+require-runtime-features = [ "build" ]
+exclude = [
+  "hubs_bot/__main__.py",
+]
+mypy-args = [
+  "--strict",
+  "--ignore-missing-imports",
+]
 
 [tool.coverage.run]
 source = ["hubs_bot/"]
 omit = ["*/__main__.py"]
+
+[tool.coverage.report]
+exclude_also = [
+  "def __repr__",
+  "if self.debug:",
+  "if settings.DEBUG",
+  "raise AssertionError",
+  "raise NotImplementedError",
+  "assert_never",
+  "if 0:",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+  "class .*\\bProtocol\\):",
+  "@(abc\\.)?abstractmethod",
+]
 
 [tool.pytest.ini_options]
 addopts = "-ra --cov hubs_bot"
