@@ -37,7 +37,7 @@ def scrub_response(response: dict[str, Any]) -> dict[str, Any]:
         del response["headers"]["set-cookie"]
 
     body = response.get("body", {}).get("string")
-    if body and body.startswith(b"{") and body.endswith(b"}"):
+    if body and isinstance(body, bytes) and body.startswith(b"{") and body.endswith(b"}"):
         data = json.loads(body)
         for key, value in FILTERS:
             if key in data:

@@ -1,0 +1,99 @@
+interactions:
+- request:
+    body: '{"model": "gpt-3.5-turbo-instruct", "prompt": "Using one of the following
+      categories (politics), categorize this article and respond with just the category:Some
+      article about local politics", "max_tokens": 10, "temperature": 0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      authorization:
+      - <AUTHORIZATION>
+      connection:
+      - keep-alive
+      content-length:
+      - '227'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      user-agent:
+      - OpenAI/Python 1.5.0
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 1.5.0
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.11.6
+    method: POST
+    uri: https://api.openai.com/v1/completions
+  response:
+    content: "{\n  \"id\": \"cmpl-8XbDlaPwvBunSbzWZmce7S5y7LiNg\",\n  \"object\":
+      \"text_completion\",\n  \"created\": 1703018593,\n  \"model\": \"gpt-3.5-turbo-instruct\",\n
+      \ \"choices\": [\n    {\n      \"text\": \"\\n\\nPolitics\",\n      \"index\":
+      0,\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n
+      \ \"usage\": {\n    \"prompt_tokens\": 26,\n    \"completion_tokens\": 2,\n
+      \   \"total_tokens\": 28\n  }\n}\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 83827a033af98280-IAD
+      Cache-Control:
+      - no-cache, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 Dec 2023 20:43:14 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-model:
+      - gpt-3.5-turbo-instruct
+      openai-organization:
+      - user-j7mpqhkteqvygtlal54u8pdc
+      openai-processing-ms:
+      - '106'
+      openai-version:
+      - '2020-10-01'
+      strict-transport-security:
+      - max-age=15724800; includeSubDomains
+      x-ratelimit-limit-requests:
+      - '3000'
+      x-ratelimit-limit-tokens:
+      - '250000'
+      x-ratelimit-limit-tokens_usage_based:
+      - '250000'
+      x-ratelimit-remaining-requests:
+      - '2999'
+      x-ratelimit-remaining-tokens:
+      - '249989'
+      x-ratelimit-remaining-tokens_usage_based:
+      - '249989'
+      x-ratelimit-reset-requests:
+      - 20ms
+      x-ratelimit-reset-tokens:
+      - 2ms
+      x-ratelimit-reset-tokens_usage_based:
+      - 2ms
+      x-request-id:
+      - e037583e04f34f0af7fe46afd62848fa
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

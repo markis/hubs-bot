@@ -1,12 +1,12 @@
 from functools import cached_property
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
-import openai
 import requests
+from openai import OpenAI
 
 from hubs_bot.config import Config
 
-if TYPE_CHECKING:  # pragma: no cover
+if TYPE_CHECKING:
     from praw import Reddit
 
     from hubs_bot.categorizer import Categorizer
@@ -23,8 +23,8 @@ class Context:
         return resp.text
 
     @cached_property
-    def openai_completion(self) -> Any:
-        return openai.Completion
+    def openai(self) -> OpenAI:
+        return OpenAI(api_key=self.config.openai_key)
 
     @cached_property
     def categorizer(self) -> "Categorizer":
