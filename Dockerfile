@@ -11,7 +11,7 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
 COPY pyproject.toml /src/
 COPY hubs_bot/ /src/hubs_bot/
 RUN --mount=type=cache,target=/var/cache/pip/ \
-  --mount=type=bind,src=.git,dst=/app/otto/.git \
+  --mount=type=bind,src=.git,dst=/src/.git \
   pip install --no-cache-dir build~="$BUILD_VERSION"; \
   python -m build --wheel
 
@@ -33,7 +33,6 @@ RUN --mount=type=bind,from=builder,src=/src/dist,target=/src/dist \
   --mount=type=cache,target=/var/lib/apt/lists \
   --mount=type=cache,target=/var/cache \
   --mount=type=tmpfs,target=/var/log \
-  --mount=type=bind,src=.git,dst=/app/otto/.git \
   apt-get update; \
   apt-get install -y --no-install-recommends build-essential="$BUILD_ESSENTIAL"; \
   pip install --no-cache-dir /src/dist/*.whl; \
