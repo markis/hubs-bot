@@ -7,7 +7,7 @@ on:
       - master
 
 env:
-  PLATFORMS: linux/arm/v7,linux/arm64
+  PLATFORMS: linux/arm64
   IMAGE_NAME: markis/hubs-bot
 
 jobs:

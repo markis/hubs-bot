@@ -40,6 +40,7 @@ class Config:
     client_id: str = field(default=os.environ.get("CLIENT_ID", "client_id"))
     client_secret: str = field(default=os.environ.get("CLIENT_SECRET", "client_secret"))
     openai_key: str = field(default=os.environ.get("OPEN_AI_KEY", "open_ai_key"))
+    openai_model: str = field(default=os.environ.get("OPEN_AI_MODEL", "gpt-3.5-turbo-instruct"))
 
     def __post_init__(self) -> None:
         import openai

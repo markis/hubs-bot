@@ -33,7 +33,7 @@ class Categorizer:
         self.config = config
         self.openai = context.openai
 
-    def flair_submission(self, submission: Submission) -> None:
+    def flair_submission(self, submission: Submission, article: str) -> None:
         """
         Flair the submission using only the flair available on the subreddit
         """
@@ -44,7 +44,7 @@ class Categorizer:
             if is_flair(choice)
         }
 
-        flair_id = self._ask_openai(submission.title, choices)
+        flair_id = self._ask_openai(article, choices)
         submission.flair.select(flair_id)
 
     def _ask_openai(self, content_text: str, choices: dict[str, str]) -> str:
@@ -55,9 +55,7 @@ class Categorizer:
             + "), categorize this article and respond with just the category:"
             + content_text
         )
-        resp = self.openai.completions.create(
-            model="gpt-3.5-turbo-instruct", prompt=prompt, max_tokens=10, temperature=0
-        )
+        resp = self.openai.completions.create(model=self.config.openai_model, prompt=prompt)
 
         if resp and resp.choices and len(resp.choices) > 0 and (text := resp.choices[0].text):
             result = choices.get(text.strip().lower(), result)
