@@ -31,7 +31,7 @@ RUN groupadd --system --gid 888 bot && \
 ARG BUILD_ESSENTIAL=12.9
 RUN --mount=type=bind,from=builder,src=/src/dist,target=/src/dist \
   --mount=type=cache,target=/var/lib/apt/lists \
-  --mount=type=cache,target=/var/cache \
+  --mount=type=cache,target=/var/cache/pip/ \
   --mount=type=tmpfs,target=/var/log \
   apt-get update; \
   apt-get install -y --no-install-recommends build-essential="$BUILD_ESSENTIAL"; \
