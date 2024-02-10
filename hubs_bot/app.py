@@ -21,9 +21,10 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class HubTimesLink:
-    headline: str
+class HubTimesArticle:
     url: str
+    headline: str
+    article: str
 
 
 class HubTimesBot:
@@ -37,6 +38,7 @@ class HubTimesBot:
         self.reddit = context.reddit
         self.http_get = context.http_get
         self.categorizer = context.categorizer
+        self.tldr = context.tldr
 
     def run(self) -> None:
         """
@@ -46,24 +48,36 @@ class HubTimesBot:
         """
         logger.info("running")
 
-        link = self.get_hub_times_link()
-        if not link:
-            logger.info("no link found")
-        else:
+        try:
+            link = self.get_hub_times_article()
             logger.info("link found: %s", link)
             self.submit_link(link)
+        except AssertionError:
+            logger.exception("no link found")
 
-    def get_hub_times_link(self) -> HubTimesLink | None:
+    def get_hub_times_article(self) -> HubTimesArticle:
         """
         Get the latest article from the hub times front page
         """
         html = self.http_get(self.config.hubtimes_url)
         soup = BeautifulSoup(html, "html.parser")
         link = soup.find(self.is_hub_times_link)
-        if not isinstance(link, Tag):
-            return None
+        assert isinstance(link, Tag), "No article on front page"
 
-        return HubTimesLink(url=self.get_url(link), headline=self.get_headline(link))
+        article_url = self.get_url(link)
+        article_html = self.http_get(article_url)
+        soup = BeautifulSoup(article_html, "html.parser")
+        article_tag = soup.find("article")
+
+        assert article_tag, "Article page is missing an <article> tag"
+        article = article_tag.text
+        headline_tag = article_tag.find("h1")
+
+        assert headline_tag, "Article page is missing an <h1> tag"
+        assert not isinstance(headline_tag, int), "Article page has numeric h1"
+        article_headline = headline_tag.text
+
+        return HubTimesArticle(url=article_url, headline=article_headline, article=article)
 
     def is_hub_times_link(self, tag: Tag | NavigableString) -> bool:
         """
@@ -82,7 +96,7 @@ class HubTimesBot:
     def get_url(self, tag: Tag) -> str:
         return urljoin(self.config.base_url, tag.attrs["href"])
 
-    def submit_link(self, link: HubTimesLink) -> bool:
+    def submit_link(self, link: HubTimesArticle) -> bool:
         """
         Submit the link to Reddit
         """
@@ -106,6 +120,12 @@ class HubTimesBot:
             title=link.headline, url=link.url, flair_id=self.config.subreddit_flair
         )
         submission.mod.approve()
-        self.categorizer.flair_submission(submission)
+        self.categorizer.flair_submission(submission, link.article)
         logger.info("submitted link %s", submission.id)
+
+        tldr = self.tldr.generate(link.article)
+        if tldr:
+            tldr_comment = f"Generated Article Summary:\n\n> {tldr}"
+            submission.reply(tldr_comment)
+
         return True

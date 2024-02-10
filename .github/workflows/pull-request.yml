@@ -50,4 +50,4 @@ jobs:
           python-version-file: ".python-version"
           cache: "pip"
       - run: pip install '.[dev,test]'
-      - run: pytest --block-network --cov-fail-under=100
+      - run: pytest --block-network

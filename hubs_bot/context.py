@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from praw import Reddit
 
     from hubs_bot.categorizer import Categorizer
+    from hubs_bot.summarizer import Summarizer
 
 
 class Context:
@@ -30,7 +31,13 @@ class Context:
     def categorizer(self) -> "Categorizer":
         from hubs_bot.categorizer import Categorizer
 
-        return Categorizer(self, Config())
+        return Categorizer(self, self.config)
+
+    @cached_property
+    def tldr(self) -> "Summarizer":
+        from hubs_bot.summarizer import Summarizer
+
+        return Summarizer(self, self.config)
 
     @cached_property
     def reddit(self) -> "Reddit":
