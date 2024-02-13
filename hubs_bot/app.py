@@ -38,7 +38,7 @@ class HubTimesBot:
         self.reddit = context.reddit
         self.http_get = context.http_get
         self.categorizer = context.categorizer
-        self.tldr = context.tldr
+        self.summarizer = context.summarizer
 
     def run(self) -> None:
         """
@@ -123,9 +123,9 @@ class HubTimesBot:
         self.categorizer.flair_submission(submission, link.article)
         logger.info("submitted link %s", submission.id)
 
-        tldr = self.tldr.generate(link.article)
-        if tldr:
-            tldr_comment = f"Generated Article Summary:\n\n> {tldr}"
-            submission.reply(tldr_comment)
+        summary = self.summarizer.generate(link.article)
+        if summary:
+            summary_comment = f"Generated Article Summary:\n\n> {summary}"
+            submission.reply(summary_comment)
 
         return True

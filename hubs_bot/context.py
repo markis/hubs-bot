@@ -34,7 +34,7 @@ class Context:
         return Categorizer(self, self.config)
 
     @cached_property
-    def tldr(self) -> "Summarizer":
+    def summarizer(self) -> "Summarizer":
         from hubs_bot.summarizer import Summarizer
 
         return Summarizer(self, self.config)
