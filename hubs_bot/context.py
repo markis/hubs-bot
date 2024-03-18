@@ -30,11 +30,12 @@ class Context:
     def http_get(self, url: str) -> str:
         """Make an HTTP GET request to the given URL and return the response."""
         cookie_path = Path(self.config.cookies_file)
-        cookie_jar = requests.cookies.RequestsCookieJar()
+        cookie_jar = {}
         if cookie_path.exists():
             moz_jar = MozillaCookieJar(cookie_path)
             moz_jar.load()
-            cookie_jar.update(moz_jar)
+            for cookie in moz_jar:
+                cookie_jar[cookie.name] = str(cookie.value)
 
         resp = requests.get(url, cookies=cookie_jar, timeout=10)
         return resp.text

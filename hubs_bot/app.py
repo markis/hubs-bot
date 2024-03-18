@@ -71,7 +71,7 @@ class HubTimesBot:
         article_tag = soup.find("article")
 
         assert article_tag, "Article page is missing an <article> tag"
-        article = article_tag.text
+        article = article_tag.get_text("\n", strip=True)
         headline_tag = article_tag.find("h1")
 
         assert headline_tag, "Article page is missing an <h1> tag"
