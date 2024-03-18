@@ -27,8 +27,9 @@ def vcr_config() -> dict[str, Any]:
     }
 
 
-def pytest_recording_configure(_: pytest.Config, vcr: VCR) -> None:
+def pytest_recording_configure(config: pytest.Config, vcr: VCR) -> None:
     """Configure VCR and pytest-recording."""
+    del config  # unused
     vcr.before_record_response = scrub_response
 
 

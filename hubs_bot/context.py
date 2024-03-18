@@ -1,8 +1,12 @@
 """This module contains the Context class, which is a container for the bot's dependencies."""
 from functools import cached_property
+from http.cookiejar import MozillaCookieJar
+from pathlib import Path
 from typing import TYPE_CHECKING
 
 import requests
+import requests.cookies
+import requests.utils
 from openai import OpenAI
 
 from hubs_bot.config import Config
@@ -25,7 +29,15 @@ class Context:
 
     def http_get(self, url: str) -> str:
         """Make an HTTP GET request to the given URL and return the response."""
-        resp = requests.get(url, timeout=10)
+        cookie_path = Path(self.config.cookies_file)
+        cookie_jar = {}
+        if cookie_path.exists():
+            moz_jar = MozillaCookieJar(cookie_path)
+            moz_jar.load()
+            for cookie in moz_jar:
+                cookie_jar[cookie.name] = str(cookie.value)
+
+        resp = requests.get(url, cookies=cookie_jar, timeout=10)
         return resp.text
 
     @cached_property
