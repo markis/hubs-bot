@@ -1,3 +1,4 @@
+"""This module contains the Context class, which is a container for the bot's dependencies."""
 from functools import cached_property
 from typing import TYPE_CHECKING
 
@@ -14,33 +15,41 @@ if TYPE_CHECKING:
 
 
 class Context:
+    """A container for the bot's dependencies."""
+
     config: Config
 
     def __init__(self, config: Config) -> None:
+        """Initialize the context."""
         self.config = config
 
     def http_get(self, url: str) -> str:
+        """Make an HTTP GET request to the given URL and return the response."""
         resp = requests.get(url, timeout=10)
         return resp.text
 
     @cached_property
     def openai(self) -> OpenAI:
+        """Return an instance of the OpenAI API."""
         return OpenAI(api_key=self.config.openai_key)
 
     @cached_property
     def categorizer(self) -> "Categorizer":
+        """Return an instance of the Categorizer."""
         from hubs_bot.categorizer import Categorizer
 
         return Categorizer(self, self.config)
 
     @cached_property
     def summarizer(self) -> "Summarizer":
+        """Return an instance of the Summarizer."""
         from hubs_bot.summarizer import Summarizer
 
         return Summarizer(self, self.config)
 
     @cached_property
     def reddit(self) -> "Reddit":
+        """Return an instance of the Reddit API."""
         from praw import Reddit
 
         return Reddit(

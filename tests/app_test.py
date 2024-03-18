@@ -1,3 +1,4 @@
+"""Tests for the app module."""
 from unittest.mock import ANY, Mock
 
 import pytest
@@ -13,6 +14,7 @@ from hubs_bot.context import Context
 
 
 def get_mock_hub_times_bot() -> tuple[HubTimesBot, Mock, Mock]:
+    """Return a mock HubTimesBot and its dependencies."""
     mock_reddit = Mock(
         spec=Reddit, subreddit=Mock(spec=Subreddit), user=Mock(me=Mock(spec=Redditor))
     )
@@ -49,6 +51,7 @@ def get_mock_hub_times_bot() -> tuple[HubTimesBot, Mock, Mock]:
 @pytest.mark.unit()
 @pytest.mark.block_network()
 def test_bot_with_link() -> None:
+    """Test the bot with a link to an article."""
     bot, mock_context, mock_reddit = get_mock_hub_times_bot()
     test_listing_page = """
     <html>
@@ -77,6 +80,7 @@ def test_bot_with_link() -> None:
 @pytest.mark.unit()
 @pytest.mark.block_network()
 def test_bot_with_no_link() -> None:
+    """Test the bot with no link to an article."""
     bot, mock_context, mock_reddit = get_mock_hub_times_bot()
     test_page = "<html></html>"
     mock_context.http_get.return_value = test_page
@@ -90,6 +94,7 @@ def test_bot_with_no_link() -> None:
 @pytest.mark.unit()
 @pytest.mark.block_network()
 def test_bot_submit_link() -> None:
+    """Test submitting a link to Reddit."""
     bot, _, mock_reddit = get_mock_hub_times_bot()
     mock_link = Mock(spec=HubTimesArticle, headline="test", url="http://test.com")
     mock_sr = mock_reddit.subreddit()
@@ -103,6 +108,7 @@ def test_bot_submit_link() -> None:
 @pytest.mark.unit()
 @pytest.mark.block_network()
 def test_bot_submit_duplicate_link() -> None:
+    """Test submitting a duplicate link to Reddit."""
     bot, _, mock_reddit = get_mock_hub_times_bot()
     mock_link = Mock(
         spec=HubTimesArticle,

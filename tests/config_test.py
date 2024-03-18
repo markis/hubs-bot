@@ -1,3 +1,4 @@
+"""Tests for the config module."""
 import os
 from typing import Any
 from unittest import mock
@@ -12,6 +13,7 @@ from hubs_bot.config import Config, create_tuple_factory
 @given(st.text(), st.tuples(st.text()))
 @settings(max_examples=10)
 def test_returned_function_returns_tuple(env_name: str, default: tuple[str, ...]) -> None:
+    """Test that the returned function returns a tuple."""
     env: dict[str, tuple[str, ...]] = {}
     factory = create_tuple_factory(env_name, default, env)
     assert isinstance(factory(), tuple)
@@ -20,6 +22,7 @@ def test_returned_function_returns_tuple(env_name: str, default: tuple[str, ...]
 @given(st.text(), st.tuples(st.text()))
 @settings(max_examples=10)
 def test_default_value(env_name: str, default: tuple[str, ...]) -> None:
+    """Test that the default value is returned when the environment variable is not set."""
     env: dict[str, tuple[str, ...]] = {}
     factory = create_tuple_factory(env_name, default, env)
     assert factory() == default
@@ -27,6 +30,7 @@ def test_default_value(env_name: str, default: tuple[str, ...]) -> None:
 
 @given(st.text(), st.tuples(st.text()), st.text("ab,"))
 def test_string_env_value(env_name: str, default: tuple[str, ...], value: str) -> None:
+    """Test that a string environment variable is split into a tuple."""
     assume("," in value)
     env = {env_name: value}
     factory = create_tuple_factory(env_name, default, env)
@@ -36,6 +40,7 @@ def test_string_env_value(env_name: str, default: tuple[str, ...], value: str) -
 @given(st.text(), st.tuples(st.text()), st.tuples(st.text()))
 @settings(max_examples=10)
 def test_tuple_env_value(env_name: str, default: tuple[str, ...], value: tuple[str, ...]) -> None:
+    """Test that a tuple environment variable is returned as is."""
     env = {env_name: value}
     factory = create_tuple_factory(env_name, default, env)
     assert factory() == value
@@ -43,6 +48,7 @@ def test_tuple_env_value(env_name: str, default: tuple[str, ...], value: tuple[s
 
 @given(st.text(), st.tuples(st.text()), st.one_of(st.integers(), st.floats(), st.booleans()))
 def test_invalid_env_value(env_name: str, default: tuple[str, ...], value: str) -> None:
+    """Test that an invalid environment variable raises a ValueError."""
     assume(not isinstance(value, str | tuple))
     env = {env_name: value}
     factory = create_tuple_factory(env_name, default, env)
@@ -70,6 +76,7 @@ def test_invalid_env_value(env_name: str, default: tuple[str, ...], value: str) 
 def test_config_instantiation(
     environ: dict[str, Any],
 ) -> None:
+    """Test that the Config class can be instantiated."""
     with mock.patch.dict(os.environ, environ):
         config = Config()
     assert isinstance(config, Config)

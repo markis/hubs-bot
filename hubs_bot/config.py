@@ -1,3 +1,4 @@
+"""Configuration for the bot."""
 import os
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass, field
@@ -10,6 +11,8 @@ NEWS_TAGS: Final = ("LOCAL", "HUDSON HUB TIMES")
 def create_tuple_factory(
     env_name: str, default: tuple[str, ...], env: Mapping[str, str | tuple[str, ...]]
 ) -> Callable[[], tuple[str, ...]]:
+    """Create a factory for a tuple from an environment variable."""
+
     def _get_set() -> tuple[str, ...]:
         value = env.get(env_name, default)
         if isinstance(value, str):
@@ -24,6 +27,8 @@ def create_tuple_factory(
 
 @dataclass
 class Config:
+    """Configuration for the bot."""
+
     base_url: str = field(default=os.environ.get("BASE_URL", BASE_URL))
     hubtimes_url: str = field(
         default=os.environ.get("HUBTIMES_URL", f"{BASE_URL}/communities/hudsonhubtimes/")
@@ -43,6 +48,7 @@ class Config:
     openai_model: str = field(default=os.environ.get("OPEN_AI_MODEL", "gpt-3.5-turbo-instruct"))
 
     def __post_init__(self) -> None:
+        """Post-initialization of the configuration. Ensure that the OpenAI key is set."""
         import openai
 
         openai.api_key = self.openai_key

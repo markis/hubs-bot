@@ -1,3 +1,4 @@
+"""Summarizer module."""
 import logging
 
 from openai import OpenAI
@@ -9,14 +10,18 @@ logger = logging.getLogger(__name__)
 
 
 class Summarizer:
+    """Summarizes articles."""
+
     config: Config
     openai: OpenAI
 
     def __init__(self, context: Context, config: Config) -> None:
+        """Initialize the summarizer."""
         self.config = config
         self.openai = context.openai
 
     def generate(self, article: str) -> str:
+        """Generate a summary of the article."""
         prompt = (
             "Can you summarize this article? Please respond with just the summary:\n\n" + article
         )

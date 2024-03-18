@@ -1,3 +1,5 @@
+"""Bot that submits articles from the Hub Times to Reddit."""
+
 import logging
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -22,18 +24,23 @@ if TYPE_CHECKING:
 
 @dataclass
 class HubTimesArticle:
+    """Represents an article from the Hub Times."""
+
     url: str
     headline: str
     article: str
 
 
 class HubTimesBot:
+    """Bot that submits articles from the Hub Times to Reddit."""
+
     config: Config
     reddit: Reddit
     http_get: Callable[[str], str]
     categorizer: Categorizer
 
     def __init__(self, context: Context, config: Config) -> None:
+        """Initialize the bot."""
         self.config = config
         self.reddit = context.reddit
         self.http_get = context.http_get
@@ -41,11 +48,7 @@ class HubTimesBot:
         self.summarizer = context.summarizer
 
     def run(self) -> None:
-        """
-        Hubs-bot main
-
-        This is the starting point of this script.
-        """
+        """This is the starting point of this bot."""
         logger.info("running")
 
         try:
@@ -56,9 +59,7 @@ class HubTimesBot:
             logger.exception("no link found")
 
     def get_hub_times_article(self) -> HubTimesArticle:
-        """
-        Get the latest article from the hub times front page
-        """
+        """Get the latest article from the Hub Times."""
         html = self.http_get(self.config.hubtimes_url)
         soup = BeautifulSoup(html, "html.parser")
         link = soup.find(self.is_hub_times_link)
@@ -81,7 +82,10 @@ class HubTimesBot:
 
     def is_hub_times_link(self, tag: Tag | NavigableString) -> bool:
         """
-        Look for links with specific tags
+        Check if tag is a link to a hub times article.
+
+        Args:
+            tag: tag to check
         """
         if isinstance(tag, Tag) and tag.name == "a" and tag.has_attr("href"):
             for news_tag in self.config.news_tags:
@@ -90,16 +94,26 @@ class HubTimesBot:
         return False
 
     def get_headline(self, tag: Tag) -> str:
+        """
+        Get Headline from tag.
+
+        Args:
+            tag: tag that contains the headline text
+        """
         text = tag.get_text() or ""
         return text.strip()
 
     def get_url(self, tag: Tag) -> str:
+        """
+        Get URL from tag.
+
+        Args:
+            tag: tag that contains the URL
+        """
         return urljoin(self.config.base_url, tag.attrs["href"])
 
     def submit_link(self, link: HubTimesArticle) -> bool:
-        """
-        Submit the link to Reddit
-        """
+        """Submit the link to Reddit."""
         reddit = self.reddit
         reddit.validate_on_submit = True
         sr: Subreddit = reddit.subreddit(self.config.subreddit)

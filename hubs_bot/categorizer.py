@@ -1,3 +1,5 @@
+"""Categorizes articles using OpenAI's GPT-3."""
+
 import logging
 from typing import TYPE_CHECKING, Any, NotRequired, TypedDict, TypeGuard
 
@@ -14,6 +16,8 @@ if TYPE_CHECKING:
 
 
 class Flair(TypedDict):
+    """Represents a flair on a subreddit."""
+
     flair_template_id: str
     flair_text: str
     flair_css_class: NotRequired[str]
@@ -22,20 +26,28 @@ class Flair(TypedDict):
 
 
 def is_flair(value: Any) -> TypeGuard[Flair]:
+    """Type guard for the Flair type."""
     return isinstance(value, dict) and all(key in value for key in Flair.__required_keys__)
 
 
 class Categorizer:
+    """Categorizes articles."""
+
     config: Config
     openai: OpenAI
 
     def __init__(self, context: Context, config: Config) -> None:
+        """Initialize the categorizer."""
         self.config = config
         self.openai = context.openai
 
     def flair_submission(self, submission: Submission, article: str) -> None:
         """
-        Flair the submission using only the flair available on the subreddit
+        Flair the submission using only the flair available on the subreddit.
+
+        Args:
+            submission: The submission to flair
+            article: The article to categorize
         """
         flair: SubmissionFlair = submission.flair
         choices = {

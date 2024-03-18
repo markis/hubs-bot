@@ -1,3 +1,4 @@
+"""Conftest for pytest-recording."""
 import json
 from typing import Any, Final
 
@@ -26,11 +27,13 @@ def vcr_config() -> dict[str, Any]:
     }
 
 
-def pytest_recording_configure(config: pytest.Config, vcr: VCR) -> None:
+def pytest_recording_configure(_: pytest.Config, vcr: VCR) -> None:
+    """Configure VCR and pytest-recording."""
     vcr.before_record_response = scrub_response
 
 
 def scrub_response(response: dict[str, Any]) -> dict[str, Any]:
+    """Scrub sensitive data from the response."""
     if "Set-Cookie" in response["headers"]:
         del response["headers"]["Set-Cookie"]
     if "set-cookie" in response["headers"]:
