@@ -47,7 +47,7 @@ class Categorizer:
 
         Args:
             submission: The submission to flair
-            article: The article to categorize
+            article: The text of the article to categorize
         """
         flair: SubmissionFlair = submission.flair
         choices = {

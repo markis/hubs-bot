@@ -33,6 +33,7 @@ class Config:
     hubtimes_url: str = field(
         default=os.environ.get("HUBTIMES_URL", f"{BASE_URL}/communities/hudsonhubtimes/")
     )
+    cookies_file: str = field(default=os.environ.get("COOKIES_FILE", "cookies.txt"))
     subreddit: str = field(default=os.environ.get("SUBREDDIT", "hudsonohtest"))
     subreddit_flair: str = field(
         default=os.environ.get("SUBREDDIT_FLAIR", "93312688-b815-11ea-917e-0e65e9cea44f")
