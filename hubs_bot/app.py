@@ -71,7 +71,7 @@ class HubTimesBot:
         article_tag = soup.find("article")
 
         assert article_tag, "Article page is missing an <article> tag"
-        article = article_tag.get_text("\n", strip=True)
+        article = article_tag.get_text(" ", strip=True)
         headline_tag = article_tag.find("h1")
 
         assert headline_tag, "Article page is missing an <h1> tag"
@@ -87,11 +87,12 @@ class HubTimesBot:
         Args:
             tag: tag to check
         """
-        if isinstance(tag, Tag) and tag.name == "a" and tag.has_attr("href"):
-            for news_tag in self.config.news_tags:
-                if tag.find(attrs={"data-c-ms": news_tag}):
-                    return True
-        return False
+        return bool(
+            isinstance(tag, Tag)
+            and tag.name == "a"
+            and tag.has_attr("href")
+            and tag.find_all(attrs={"data-c-ms": True})
+        )
 
     def get_headline(self, tag: Tag) -> str:
         """
