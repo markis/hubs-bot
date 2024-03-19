@@ -1,29 +1,43 @@
-PWD := "."
-.PHONY: venv lint test build clean
+.PHONY: venv ruff mypy lint test build clean
 
-all: install lint test
-lint: ruff black mypy
+VENV_NAME?=venv
+PYTHON?=$(VENV_NAME)/bin/python3
+PWD?="."
+.DEFAULT_GOAL := all
 
-install:
-	poetry install
+# Aliases
+all: venv lint test
+check: lint
+lint: ruff mypy
+format: fix
 
-black:
-	poetry run black --check ${PWD}
+# Create the virtual environment
+# This target ensures that the virtual environment is only created or updated when
+# the requirements.txt or requirements_dev.txt files have changed.
+venv: $(VENV_NAME)/bin/activate
+$(VENV_NAME)/bin/activate: pyproject.toml
+	test -d $(VENV_NAME) || python3 -m venv $(VENV_NAME)
+	$(MAKE) install-requirements
+	touch $(VENV_NAME)/bin/activate
 
-ruff:
-	poetry run ruff check ${PWD}
+install-requirements:
+	$(PYTHON) -m pip install ".[dev,test]"
 
-mypy:
-	poetry run mypy ${PWD}
+test: venv
+	$(PYTHON) -m pytest --cov-report html --cov-report term
+
+ruff: venv
+	$(PYTHON) -m ruff check ${PWD}
+	$(PYTHON) -m ruff format --check ${PWD}
+
+mypy: venv
+	$(PYTHON) -m mypy ${PWD}
 
 fix:
-	poetry run ruff check --fix ${PWD}
-	poetry run black ${PWD}
-
-test:
-	@poetry run pytest --cov-report html --cov-report term
+	$(PYTHON) -m ruff check --fix ${PWD}
+	$(PYTHON) -m ruff format ${PWD}
 
 clean:
-	poetry env remove --all
+	rm -r $(VENV_NAME)
 	rm -rf build dist htmlcov *.egg-info
 	find . -name "*.pyc" -delete
