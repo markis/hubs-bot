@@ -93,7 +93,7 @@ lint.select = [
   "SLOT", "SLF", "T10", "T20", "TD", "TRY", "TCH", "UP", "UP", "W", "YTT"
 ]
 
-lint.ignore = ["D212", "D417"]
+lint.ignore = ["ISC001", "D212", "D417"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*.py" = ["ARG", "PLR0913", "S"]
